@@ -1,33 +1,45 @@
 {
-  "todos": [
+  "players": [
     {
       "id": 0,
-      "name": "Go to the gym",
-      "done": true
-    },
-    {
-      "id": 1,
-      "name": "Walk the dog",
-      "done": true
-    },
-    {
-      "id": 2,
-      "name": "Get some pizza",
-      "done": true
-    },
-    {
-      "name": "Finish this project",
-      "id": 3,
+      "firstName": "Robert",
+      "secondName": "Lewandowski",
+      "age": 33,
       "done": false
     },
     {
-      "name": "New Todo :)",
-      "id": 4
+      "id": 1,
+      "firstName": "Leo",
+      "secondName": "Messi",
+      "age": 33,
+      "done": false
     },
     {
-      "name": "Nowe 123",
-      "id": 5,
+      "id": 2,
+      "firstName": "Cristiano",
+      "secondName": "Ronaldo",
+      "age": 33,
+      "done": false
+    },
+    {
+      "firstName": "Zinedine",
+      "secondName": "Zidane",
+      "id": 3,
+      "age": 33,
       "done": true
+    }
+  ],
+  "clubs": [
+    {
+      "id": 0,
+      "name": "Real Madryt"
+    }
+  ],
+  "contracts": [
+    {
+      "id": 0,
+      "idPlayer": "2",
+      "idClub": "0"
     }
   ]
 }

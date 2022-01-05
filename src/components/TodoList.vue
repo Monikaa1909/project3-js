@@ -1,21 +1,21 @@
 <template>
   <div>
-    <h1>Todos</h1>
+    <h1>TOP Players</h1>
     <input
         type="text"
-        v-model="todoName"
-        @keyup.enter="addTodo"
-        aria-label="Add a new Todo"
-        placeholder="Add a new Todo"
+        v-model="firstName"
+        @keyup.enter="addPlayer"
+        aria-label="Add a new player"
+        placeholder="Add a new player"
     />
     <ul>
       <li
-          v-for="todo of todos"
-          :class="{ done: todo.done }"
-          :key="todo.id"
-          @click="doneTodo(todo.id)"
+          v-for="player of players"
+          :class="{ done: player.done }"
+          :key="player.id"
+          @click="doneTodo(player.id)"
       >
-        {{ todo.name }}
+        {{ player.firstName }}
       </li>
     </ul>
   </div>
@@ -24,21 +24,21 @@
 <script>
 import axios from "axios";
 
-const baseURL = "http://localhost:3001/todos";
+const baseURL = "http://localhost:3001/players";
 
 export default {
-  name: "TodoList",
+  name: "PlayerList",
   data() {
     return {
-      todos: [],
-      todoName: ""
+      players: [],
+      firstName: ""
     };
   },
   async created() {
     try {
       const res = await axios.get(baseURL);
 
-      this.todos = res.data;
+      this.players = res.data;
     } catch (e) {
       console.error(e);
     }
@@ -50,7 +50,7 @@ export default {
           done: true
         });
 
-        this.todos = this.todos.map(todo => {
+        this.players = this.players.map(todo => {
           if (todo.id === id) {
             todo.done = true;
           }
@@ -61,13 +61,13 @@ export default {
         console.error(e);
       }
     },
-    async addTodo() {
+    async addPlayer() {
       try {
-        const res = await axios.post(baseURL, { name: this.todoName });
+        const res = await axios.post(baseURL, { firstName: this.firstname });
 
-        this.todos = [...this.todos, res.data];
+        this.players = [...this.players, res.data];
 
-        this.todoName = "";
+        this.firstName = "";
       } catch (e) {
         console.error(e);
       }

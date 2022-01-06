@@ -2,20 +2,41 @@
   <div>
     <h1>TOP Players</h1>
     <input
-        type="text"
+        type="text" required
         v-model="firstName"
         @keyup.enter="addPlayer"
-        aria-label="Add a new player"
-        placeholder="Add a new player"
+        aria-label="First name"
+        placeholder="First name"
+    />
+    <input
+        type="text" required
+        v-model="lastName"
+        @keyup.enter="addPlayer"
+        aria-label="Second name"
+        placeholder="Second name"
+    />
+    <input
+        type="text" required
+        v-model="age"
+        @keyup.enter="addPlayer"
+        aria-label="Age"
+        placeholder="Age"
+    />
+    <input
+        type="text" required
+        v-model="retired"
+        @keyup.enter="addPlayer"
+        aria-label="Retired"
+        placeholder="Retired"
     />
     <ul>
       <li
           v-for="player of players"
-          :class="{ done: player.done }"
+          :class="{ retired: player.retired }"
           :key="player.id"
-          @click="doneTodo(player.id)"
+          @click="retiredPlayer(player.id)"
       >
-        {{ player.firstName }}
+        {{ player.firstName }} {{player.lastName}}
       </li>
     </ul>
   </div>
@@ -31,7 +52,10 @@ export default {
   data() {
     return {
       players: [],
-      firstName: ""
+      firstName: "",
+      lastName: "",
+      age: null,
+      retired: null
     };
   },
   async created() {
@@ -44,15 +68,15 @@ export default {
     }
   },
   methods: {
-    async doneTodo(id) {
+    async retiredPlayer(id) {
       try {
         await axios.patch(`${baseURL}/${id}`, {
-          done: true
+          retired: true
         });
 
         this.players = this.players.map(todo => {
           if (todo.id === id) {
-            todo.done = true;
+            todo.retired = true;
           }
 
           return todo;
@@ -62,14 +86,16 @@ export default {
       }
     },
     async addPlayer() {
-      try {
-        const res = await axios.post(baseURL, { firstName: this.firstname });
+      if (this.firstName.length > 0 && this.age !== null && this.lastName.length > 0) {
+        try {
+          const res = await axios.post(baseURL, { firstName: this.firstName, lastName: this.lastName, age: this.age, retired: this.retired === null ? this.retired = false : this.retired === "true"});
 
-        this.players = [...this.players, res.data];
+          this.players = [...this.players, res.data];
 
-        this.firstName = "";
-      } catch (e) {
-        console.error(e);
+          this.firstName = "";
+        } catch (e) {
+          console.error(e);
+        }
       }
     }
   }
@@ -94,7 +120,7 @@ input {
   font-size: 1.5rem;
 }
 
-.done {
+.retired {
   text-decoration: line-through;
 }
 </style>

@@ -58,6 +58,7 @@ export default {
       retired: null
     };
   },
+
   async created() {
     try {
       const res = await axios.get(baseURL);
@@ -67,6 +68,7 @@ export default {
       console.error(e);
     }
   },
+
   methods: {
     async retiredPlayer(id) {
       try {
@@ -85,6 +87,7 @@ export default {
         console.error(e);
       }
     },
+
     async addPlayer() {
       if (this.firstName.length > 0 && this.age !== null && this.lastName.length > 0) {
         try {
@@ -93,6 +96,9 @@ export default {
           this.players = [...this.players, res.data];
 
           this.firstName = "";
+          this.lastName = ""
+          this.age = null
+          this.retired = null
         } catch (e) {
           console.error(e);
         }

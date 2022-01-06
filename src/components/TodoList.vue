@@ -36,7 +36,7 @@
           :key="player.id"
           @click="retiredPlayer(player.id)"
       >
-        {{ player.firstName }} {{player.lastName}}
+        {{ player.firstName }} {{ player.lastName }} {{ player.age }} {{ player.retired }}
       </li>
     </ul>
   </div>
@@ -89,7 +89,7 @@ export default {
     },
 
     async addPlayer() {
-      if (this.firstName.length > 0 && this.age !== null && this.lastName.length > 0) {
+      if (this.firstName.length > 0 && !isNaN(this.age) && this.lastName.length > 0) {
         try {
           const res = await axios.post(baseURL, { firstName: this.firstName, lastName: this.lastName, age: this.age, retired: this.retired === null ? this.retired = false : this.retired === "true"});
 

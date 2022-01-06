@@ -27,49 +27,8 @@
       "id": 3,
       "age": 33,
       "retired": true
-    },
-    {
-      "firstName": "dsa",
-      "lastName": "dsa",
-      "age": "dsa",
-      "retired": true,
-      "id": 4
-    },
-    {
-      "firstName": "dsa",
-      "lastName": "dsa",
-      "age": "40",
-      "retired": true,
-      "id": 5
-    },
-    {
-      "firstName": "asd",
-      "lastName": "asd",
-      "age": "123",
-      "retired": true,
-      "id": 6
-    },
-    {
-      "firstName": "dsa",
-      "lastName": "asd",
-      "age": "4221",
-      "retired": true,
-      "id": 7
-    },
-    {
-      "firstName": "ddd",
-      "lastName": "sss",
-      "age": "12",
-      "retired": false,
-      "id": 8
-    },
-    {
-      "firstName": "uhfeq",
-      "lastName": "jbwfeaf",
-      "age": "764123",
-      "retired": false,
-      "id": 9
     }
+
   ],
   "clubs": [
     {

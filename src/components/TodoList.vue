@@ -1,44 +1,45 @@
 <template>
   <div>
     <h1>TOP Players</h1>
-    <input
-        type="text" required
-        v-model="firstName"
-        @keyup.enter="addPlayer"
-        aria-label="First name"
-        placeholder="First name"
-    />
-    <input
-        type="text" required
-        v-model="lastName"
-        @keyup.enter="addPlayer"
-        aria-label="Second name"
-        placeholder="Second name"
-    />
-    <input
-        type="text" required
-        v-model="age"
-        @keyup.enter="addPlayer"
-        aria-label="Age"
-        placeholder="Age"
-    />
-    <input
-        type="text" required
-        v-model="retired"
-        @keyup.enter="addPlayer"
-        aria-label="Retired"
-        placeholder="Retired"
-    />
-    <ul>
-      <li
+    <div>
+      <input
+          type="text" required
+          v-model="firstName"
+          @keyup.enter="addPlayer"
+          aria-label="First name"
+          placeholder="First name"
+      />
+      <input
+          type="text" required
+          v-model="lastName"
+          @keyup.enter="addPlayer"
+          aria-label="Second name"
+          placeholder="Second name"
+      />
+      <input
+          type="text" required
+          v-model="age"
+          @keyup.enter="addPlayer"
+          aria-label="Age"
+          placeholder="Age"
+      />
+      <input
+          type="text" required
+          v-model="retired"
+          @keyup.enter="addPlayer"
+          aria-label="Retired"
+          placeholder="Retired"
+      />
+    </div>
+    
+      <div
           v-for="player of players"
           :class="{ retired: player.retired }"
           :key="player.id"
           @click="retiredPlayer(player.id)"
       >
         {{ player.firstName }} {{ player.lastName }} {{ player.age }} {{ player.retired }}
-      </li>
-    </ul>
+      </div>
   </div>
 </template>
 

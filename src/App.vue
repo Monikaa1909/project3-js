@@ -1,14 +1,14 @@
 <template>
-  <todo-list />
+  <player-list />
 </template>
 
 <script>
-import TodoList from "./components/TodoList.vue";
+import PlayersList from "./components/PlayersList.vue";
 
 export default {
   name: "App",
   components: {
-    TodoList
+    PlayerList: PlayersList
   }
 };
 </script>

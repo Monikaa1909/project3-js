@@ -31,21 +31,34 @@
           placeholder="Retired"
       />
     </div>
-    
-      <div
-          v-for="player of players"
-          :class="{ retired: player.retired }"
-          :key="player.id"
-          @click="retiredPlayer(player.id)"
-      >
-        {{ player.firstName }} {{ player.lastName }} {{ player.age }} {{ player.retired }}
-      </div>
+    <component v-bind:is="currentView" class="view"></component>
+    <table>
+      <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Country</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+            v-for="player of players"
+            :class="{ retired: player.retired }"
+            :key="player.id"
+            @click="retiredPlayer(player.id)">
+          <td>{{player.firstName}}</td>
+          <td>{{player.lastName}}</td>
+          <td>Tu będzie kraj pochodzenia</td>
+          <td>{{player.age}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-
 const baseURL = "http://localhost:3001/players";
 
 export default {
@@ -58,6 +71,12 @@ export default {
       age: null,
       retired: null
     };
+  },
+
+  computed: {
+    currentView() {
+      return this.view
+    }
   },
 
   async created() {
@@ -77,12 +96,12 @@ export default {
           retired: true
         });
 
-        this.players = this.players.map(todo => {
-          if (todo.id === id) {
-            todo.retired = true;
+        this.players = this.players.map(player => {
+          if (player.id === id) {
+            player.retired = true;
           }
 
-          return todo;
+          return player;
         });
       } catch (e) {
         console.error(e);
@@ -129,5 +148,14 @@ input {
 
 .retired {
   text-decoration: line-through;
+}
+
+tr {
+  font-size: 2rem;
+}
+
+td {
+  padding: 0 4rem;
+  font-size: 1rem;
 }
 </style>

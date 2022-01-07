@@ -1,13 +1,11 @@
 <template>
   <div class="players">
     <player-list />
-    <router-link to="/addplayer">Dodaj zawodnika</router-link>
+    <button @click="$router.push('addplayer')">Dodaj zawodnika</button>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
 import PlayersList from "../components/PlayersList";
 
 export default {
@@ -39,7 +37,7 @@ ul {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 3rem;
+  font-size: 50px;
   padding: 0 2rem;
   background: #38ada9;
   /*display: flex;*/

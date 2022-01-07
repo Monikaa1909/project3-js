@@ -28,9 +28,10 @@
         aria-label="Retired"
         placeholder="Retired"
     />
-<!--    TODO: trzeba zrobić tak żeby to przycisk zatwierdzał dane i jednocześnie cofał na główną z zawodnikami, nie enter-->
 
-    <router-link to="/">Back to all players</router-link>
+<!--    TODO: trzeba zrobić tak żeby to przycisk zatwierdzał dane i jednocześnie cofał na główną z zawodnikami, nie enter-->
+    <button @click="$router.push('/')">Back to all players</button>
+
   </div>
 </template>
 
@@ -51,12 +52,6 @@ export default {
     };
   },
 
-  // computed: {
-  //   currentView() {
-  //     return this.view
-  //   }
-  // },
-
   async created() {
     try {
       const res = await axios.get(baseURL);
@@ -68,24 +63,6 @@ export default {
   },
 
   methods: {
-    // async retiredPlayer(id) {
-    //   try {
-    //     await axios.patch(`${baseURL}/${id}`, {
-    //       retired: true
-    //     });
-    //
-    //     this.players = this.players.map(player => {
-    //       if (player.id === id) {
-    //         player.retired = true;
-    //       }
-    //
-    //       return player;
-    //     });
-    //   } catch (e) {
-    //     console.error(e);
-    //   }
-    // },
-
     async addPlayer() {
       if (this.firstName.length > 0 && !isNaN(this.age) && this.lastName.length > 0) {
         try {

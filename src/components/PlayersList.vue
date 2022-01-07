@@ -1,38 +1,7 @@
 <template>
   <div>
     <h1>TOP Players</h1>
-<!--    <div>-->
-<!--      <input-->
-<!--          type="text" required-->
-<!--          v-model="firstName"-->
-<!--          @keyup.enter="addPlayer"-->
-<!--          aria-label="First name"-->
-<!--          placeholder="First name"-->
-<!--      />-->
-<!--      <input-->
-<!--          type="text" required-->
-<!--          v-model="lastName"-->
-<!--          @keyup.enter="addPlayer"-->
-<!--          aria-label="Second name"-->
-<!--          placeholder="Second name"-->
-<!--      />-->
-<!--      <input-->
-<!--          type="text" required-->
-<!--          v-model="age"-->
-<!--          @keyup.enter="addPlayer"-->
-<!--          aria-label="Age"-->
-<!--          placeholder="Age"-->
-<!--      />-->
-<!--      <input-->
-<!--          type="text" required-->
-<!--          v-model="retired"-->
-<!--          @keyup.enter="addPlayer"-->
-<!--          aria-label="Retired"-->
-<!--          placeholder="Retired"-->
-<!--      />-->
-<!--    </div>-->
-<!--    <component v-bind:is="currentView" class="view"></component>-->
-    <table>
+    <table id="playersTable">
       <thead>
         <tr>
           <th>Firstname</th>
@@ -73,12 +42,6 @@ export default {
     };
   },
 
-  // computed: {
-  //   currentView() {
-  //     return this.view
-  //   }
-  // },
-
   async created() {
     try {
       const res = await axios.get(baseURL);
@@ -107,30 +70,13 @@ export default {
         console.error(e);
       }
     },
-
-    // async addPlayer() {
-    //   if (this.firstName.length > 0 && !isNaN(this.age) && this.lastName.length > 0) {
-    //     try {
-    //       const res = await axios.post(baseURL, { firstName: this.firstName, lastName: this.lastName, age: this.age, retired: this.retired === null ? this.retired = false : this.retired === "true"});
-    //
-    //       this.players = [...this.players, res.data];
-    //
-    //       this.firstName = "";
-    //       this.lastName = ""
-    //       this.age = null
-    //       this.retired = null
-    //     } catch (e) {
-    //       console.error(e);
-    //     }
-    //   }
-    // }
   }
 };
 </script>
 
 <style scoped>
 h1 {
-  text-decoration: underline;
+  /*text-decoration: underline;*/
 }
 
 li {
@@ -151,11 +97,16 @@ input {
 }
 
 tr {
-  font-size: 2rem;
+  /*font-size: 2rem;*/
 }
 
 td {
-  padding: 0 4rem;
+  /*padding: 0 4rem;*/
   font-size: 1rem;
+
+}
+
+#playersTable {
+  border: 3mm ridge yellow
 }
 </style>

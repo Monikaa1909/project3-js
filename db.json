@@ -27,6 +27,13 @@
       "id": 3,
       "age": 33,
       "retired": true
+    },
+    {
+      "firstName": "Asd",
+      "lastName": "asd",
+      "age": null,
+      "retired": true,
+      "id": 4
     }
   ],
   "clubs": [

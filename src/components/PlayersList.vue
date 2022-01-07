@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>TOP Players</h1>
     <table id="playersTable">
       <thead>
         <tr>
@@ -75,13 +74,6 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-  /*text-decoration: underline;*/
-}
-
-li {
-  color: white;
-}
 
 input {
   width: 100%;
@@ -92,21 +84,5 @@ input {
   font-size: 1.5rem;
 }
 
-.retired {
-  text-decoration: line-through;
-}
 
-tr {
-  /*font-size: 2rem;*/
-}
-
-td {
-  /*padding: 0 4rem;*/
-  font-size: 1rem;
-
-}
-
-#playersTable {
-  border: 3mm ridge yellow
-}
 </style>

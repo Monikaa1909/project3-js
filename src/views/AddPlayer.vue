@@ -1,36 +1,37 @@
 <template>
   <div>
-    <input
-        type="text" required
-        v-model="firstName"
-        @keyup.enter="addPlayer"
-        aria-label="First name"
-        placeholder="First name"
-    />
-    <input
-        type="text" required
-        v-model="lastName"
-        @keyup.enter="addPlayer"
-        aria-label="Second name"
-        placeholder="Second name"
-    />
-    <input
-        type="text" required
-        v-model="age"
-        @keyup.enter="addPlayer"
-        aria-label="Age"
-        placeholder="Age"
-    />
-    <input
-        type="text" required
-        v-model="retired"
-        @keyup.enter="addPlayer"
-        aria-label="Retired"
-        placeholder="Retired"
-    />
+    <form @submit.prevent="addPlayer($router)">
+      <input
+          type="text" required
+          v-model="firstName"
+          aria-label="First name"
+          placeholder="First name"
+      />
+      <input
+          type="text" required
+          v-model="lastName"
+          aria-label="Second name"
+          placeholder="Second name"
+      />
+      <input
+          type="text" required
+          v-model="age"
+          aria-label="Age"
+          placeholder="Age"
+      />
 
-<!--    TODO: trzeba zrobić tak żeby to przycisk zatwierdzał dane i jednocześnie cofał na główną z zawodnikami, nie enter-->
-    <button @click="$router.push('/')">Back to all players</button>
+      <input
+          type="text" required
+          v-model="retired"
+          aria-label="Retired"
+          placeholder="Retired"
+      />
+      <div>
+        <button class="submit" >Back to all players</button>
+      </div>
+    </form>
+
+    <!--    TODO: trzeba zrobić tak żeby to przycisk zatwierdzał dane i jednocześnie cofał na główną z zawodnikami, nie enter-->
 
   </div>
 </template>
@@ -55,7 +56,6 @@ export default {
   async created() {
     try {
       const res = await axios.get(baseURL);
-
       this.players = res.data;
     } catch (e) {
       console.error(e);
@@ -63,7 +63,7 @@ export default {
   },
 
   methods: {
-    async addPlayer() {
+    async addPlayer(router) {
       if (this.firstName.length > 0 && !isNaN(this.age) && this.lastName.length > 0) {
         try {
           const res = await axios.post(baseURL, { firstName: this.firstName, lastName: this.lastName, age: this.age, retired: this.retired === null ? this.retired = false : this.retired === "true"});
@@ -77,6 +77,8 @@ export default {
         } catch (e) {
           console.error(e);
         }
+
+        router.push('/')
       }
     }
   }

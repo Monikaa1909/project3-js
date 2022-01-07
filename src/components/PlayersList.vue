@@ -1,37 +1,37 @@
 <template>
   <div>
     <h1>TOP Players</h1>
-    <div>
-      <input
-          type="text" required
-          v-model="firstName"
-          @keyup.enter="addPlayer"
-          aria-label="First name"
-          placeholder="First name"
-      />
-      <input
-          type="text" required
-          v-model="lastName"
-          @keyup.enter="addPlayer"
-          aria-label="Second name"
-          placeholder="Second name"
-      />
-      <input
-          type="text" required
-          v-model="age"
-          @keyup.enter="addPlayer"
-          aria-label="Age"
-          placeholder="Age"
-      />
-      <input
-          type="text" required
-          v-model="retired"
-          @keyup.enter="addPlayer"
-          aria-label="Retired"
-          placeholder="Retired"
-      />
-    </div>
-    <component v-bind:is="currentView" class="view"></component>
+<!--    <div>-->
+<!--      <input-->
+<!--          type="text" required-->
+<!--          v-model="firstName"-->
+<!--          @keyup.enter="addPlayer"-->
+<!--          aria-label="First name"-->
+<!--          placeholder="First name"-->
+<!--      />-->
+<!--      <input-->
+<!--          type="text" required-->
+<!--          v-model="lastName"-->
+<!--          @keyup.enter="addPlayer"-->
+<!--          aria-label="Second name"-->
+<!--          placeholder="Second name"-->
+<!--      />-->
+<!--      <input-->
+<!--          type="text" required-->
+<!--          v-model="age"-->
+<!--          @keyup.enter="addPlayer"-->
+<!--          aria-label="Age"-->
+<!--          placeholder="Age"-->
+<!--      />-->
+<!--      <input-->
+<!--          type="text" required-->
+<!--          v-model="retired"-->
+<!--          @keyup.enter="addPlayer"-->
+<!--          aria-label="Retired"-->
+<!--          placeholder="Retired"-->
+<!--      />-->
+<!--    </div>-->
+<!--    <component v-bind:is="currentView" class="view"></component>-->
     <table>
       <thead>
         <tr>
@@ -73,11 +73,11 @@ export default {
     };
   },
 
-  computed: {
-    currentView() {
-      return this.view
-    }
-  },
+  // computed: {
+  //   currentView() {
+  //     return this.view
+  //   }
+  // },
 
   async created() {
     try {
@@ -108,22 +108,22 @@ export default {
       }
     },
 
-    async addPlayer() {
-      if (this.firstName.length > 0 && !isNaN(this.age) && this.lastName.length > 0) {
-        try {
-          const res = await axios.post(baseURL, { firstName: this.firstName, lastName: this.lastName, age: this.age, retired: this.retired === null ? this.retired = false : this.retired === "true"});
-
-          this.players = [...this.players, res.data];
-
-          this.firstName = "";
-          this.lastName = ""
-          this.age = null
-          this.retired = null
-        } catch (e) {
-          console.error(e);
-        }
-      }
-    }
+    // async addPlayer() {
+    //   if (this.firstName.length > 0 && !isNaN(this.age) && this.lastName.length > 0) {
+    //     try {
+    //       const res = await axios.post(baseURL, { firstName: this.firstName, lastName: this.lastName, age: this.age, retired: this.retired === null ? this.retired = false : this.retired === "true"});
+    //
+    //       this.players = [...this.players, res.data];
+    //
+    //       this.firstName = "";
+    //       this.lastName = ""
+    //       this.age = null
+    //       this.retired = null
+    //     } catch (e) {
+    //       console.error(e);
+    //     }
+    //   }
+    // }
   }
 };
 </script>

@@ -1,46 +1,30 @@
 <template>
-  <player-list />
+  <div id="nav">
+    <router-link to="/">TOP players</router-link> |
+    <router-link to="/teams">TOP teams</router-link>
+  </div>
+  <router-view/>
 </template>
 
-<script>
-import PlayersList from "./components/PlayersList.vue";
-
-export default {
-  name: "App",
-  components: {
-    PlayerList: PlayersList
-  }
-};
-</script>
-
 <style>
-html,
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  height: 100%;
-}
-h1 {
-  margin: 0;
-  padding: 0;
-  color: #f6b93b;
-}
-
-ul {
-  margin: 0;
-}
-
 #app {
-  height: 100%;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 3rem;
-  padding: 0 2rem;
-  background: #38ada9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+  color: #2c3e50;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>

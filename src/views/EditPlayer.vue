@@ -34,7 +34,6 @@
 
 <script>
 import axios from "axios";
-import PlayersList from "@/components/PlayersList";
 const baseURL = "http://localhost:3001/players";
 
 export default {
@@ -50,10 +49,7 @@ export default {
       retired: null
     };
   },
-  components: {
-    // eslint-disable-next-line vue/no-unused-components
-    'playerLists': PlayersList,
-  },
+
   async created() {
     try {
 
@@ -65,36 +61,12 @@ export default {
       this.lastName = res.data.lastName
       this.age = res.data.age
       this.retired = res.data.retired
-      // const res = await axios.get(baseURL);
-      // this.players = res.data;
-      // console.log()
-      // this.id = 3
-      // this.firstName = "yolo"
-      // this.lastName = "XD"
-      // this.age = 32
-      // this.retired = false
     } catch (e) {
       console.error(e);
     }
   },
 
   methods: {
-     async showPlayer(id) {
-      this.edit = true
-
-      //  await axios.get(baseURL + "/" + id, function (data) {
-      //   this.id = data.id
-      //   this.firstName = data.firstName
-      //   this.lastName = data.lastName
-      //   this.age = data.age
-      //   this.retired = data.retired
-      // })
-       console.log(id)
-       console.log("udało się podmienić")
-       console.log("to id" + this.id)
-       console.log(this.firstName)
-    },
-
     async editPlayer(router) {
       console.log(this.age)
       console.log(this.lastName)

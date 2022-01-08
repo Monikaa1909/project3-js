@@ -62,7 +62,13 @@ export default {
     async addPlayer(router) {
       if (this.firstName.length > 0 && !isNaN(this.age) && this.lastName.length > 0) {
         try {
-          const res = await axios.post(baseURL, { firstName: this.firstName, lastName: this.lastName, age: this.age, retired: this.retired === null ? this.retired = false : this.retired === "true"});
+          const [res] = await Promise.all([axios.post(baseURL, {
+            firstName: this.firstName,
+            lastName: this.lastName,
+            age: this.age,
+            retired: this.retired === null ? this.retired = false : this.retired === "true"
+          })]);
+
           this.players = [...this.players, res.data];
 
           this.firstName = "";

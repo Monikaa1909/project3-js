@@ -31,11 +31,9 @@
 <script>
 import axios from "axios";
 const baseURL = "http://localhost:3001/players";
-import EditPlayer from "@/views/EditPlayer";
 
 export default {
   name: "PlayerList",
-  mixins: [EditPlayer],
   data() {
     return {
       players: [],
@@ -61,6 +59,7 @@ export default {
     toggleToEdit(router, id) {
       router.push({ path: `/editplayer/${id}` });
     },
+
     async retiredPlayer(id) {
       try {
         await axios.patch(`${baseURL}/${id}`, {

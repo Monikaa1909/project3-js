@@ -13,8 +13,8 @@
         <tr
             v-for="player of players"
             :class="{ retired: player.retired }"
-            :key="player.id"
-            @click="retiredPlayer(player.id)">
+            :key="player.id">
+<!--            @click="retiredPlayer(player.id)">-->
           <td>{{player.firstName}}</td>
           <td>{{player.lastName}}</td>
           <td>Tu będzie kraj pochodzenia</td>
@@ -60,23 +60,23 @@ export default {
       router.push({ path: `/editplayer/${id}` });
     },
 
-    async retiredPlayer(id) {
-      try {
-        await axios.patch(`${baseURL}/${id}`, {
-          retired: true
-        });
-
-        this.players = this.players.map(player => {
-          if (player.id === id) {
-            player.retired = true;
-          }
-
-          return player;
-        });
-      } catch (e) {
-        console.error(e);
-      }
-    },
+    // async retiredPlayer(id) {
+    //   try {
+    //     await axios.patch(`${baseURL}/${id}`, {
+    //       retired: true
+    //     });
+    //
+    //     this.players = this.players.map(player => {
+    //       if (player.id === id) {
+    //         player.retired = true;
+    //       }
+    //
+    //       return player;
+    //     });
+    //   } catch (e) {
+    //     console.error(e);
+    //   }
+    // },
   }
 };
 </script>

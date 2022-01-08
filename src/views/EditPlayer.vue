@@ -61,6 +61,7 @@ export default {
       this.lastName = res.data.lastName
       this.age = res.data.age
       this.retired = res.data.retired
+      console.log("xddd")
     } catch (e) {
       console.error(e);
     }

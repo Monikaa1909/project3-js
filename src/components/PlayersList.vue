@@ -22,6 +22,9 @@
           <td>
             <button class="btn btn-edit" @click="toggleToEdit($router, player.id)">Edit</button>
           </td>
+          <td>
+            <button class="btn btn-remove" @click="toggleToRemove($router, player.id)">Remove</button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -57,7 +60,7 @@ export default {
 
   methods: {
     toggleToEdit(router, id) {
-      router.push({ path: `/editplayer/${id}` });
+      router.push({path: `/editplayer/${id}`});
     },
 
     // async retiredPlayer(id) {
@@ -77,6 +80,10 @@ export default {
     //     console.error(e);
     //   }
     // },
+
+    toggleToRemove(router, id) {
+      router.push({path: `/removeplayer/${id}`});
+    }
   }
 };
 </script>

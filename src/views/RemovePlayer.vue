@@ -48,7 +48,7 @@ export default {
         this.players.forEach((v, i) => {
           v.id = i + 1
         })
-
+        //TODO jescze póki co nie działa albo usuwa wszystkie dane dlatego testowanie na własną odpowiedzialność xd
         // for (const v of this.players) {
         //   Promise.all([axios.post(baseURL, {
         //     id: v.id,

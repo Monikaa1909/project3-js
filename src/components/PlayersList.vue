@@ -19,6 +19,9 @@
           <td>{{player.lastName}}</td>
           <td>Tu będzie kraj pochodzenia</td>
           <td>{{player.age}}</td>
+          <td>
+            <button class="btn btn-edit" @click="toggleToEdit($router, player.id)">Edit</button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -28,9 +31,11 @@
 <script>
 import axios from "axios";
 const baseURL = "http://localhost:3001/players";
+import EditPlayer from "@/views/EditPlayer";
 
 export default {
   name: "PlayerList",
+  mixins: [EditPlayer],
   data() {
     return {
       players: [],
@@ -44,14 +49,18 @@ export default {
   async created() {
     try {
       const res = await axios.get(baseURL);
-
       this.players = res.data;
     } catch (e) {
       console.error(e);
     }
   },
 
+
+
   methods: {
+    toggleToEdit(router, id) {
+      router.push({ path: `/editplayer/${id}` });
+    },
     async retiredPlayer(id) {
       try {
         await axios.patch(`${baseURL}/${id}`, {
@@ -83,6 +92,5 @@ input {
   margin-bottom: 2rem;
   font-size: 1.5rem;
 }
-
 
 </style>

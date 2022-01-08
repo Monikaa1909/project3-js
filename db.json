@@ -2,52 +2,24 @@
   "players": [
     {
       "id": 0,
-      "firstName": "Robert",
+      "firstName": "Robercikl",
       "lastName": "Lewandowski",
       "age": 33,
-      "retired": true
+      "retired": false
     },
     {
       "id": 1,
-      "firstName": "Leo",
-      "lastName": "Messi",
-      "age": 33,
-      "retired": true
+      "firstName": "d",
+      "lastName": "d",
+      "age": "3",
+      "retired": false
     },
     {
       "id": 2,
       "firstName": "Cristiano",
       "lastName": "Ronaldo",
       "age": 33,
-      "retired": true
-    },
-    {
-      "firstName": "Zinedine",
-      "lastName": "Zidane",
-      "id": 3,
-      "age": 33,
-      "retired": true
-    },
-    {
-      "firstName": "Asd",
-      "lastName": "asd",
-      "age": null,
-      "retired": true,
-      "id": 4
-    },
-    {
-      "firstName": "aa",
-      "lastName": "s",
-      "age": "12",
-      "retired": true,
-      "id": 5
-    },
-    {
-      "firstName": "e",
-      "lastName": "e",
-      "age": "32",
-      "retired": true,
-      "id": 6
+      "retired": false
     }
   ],
   "clubs": [

@@ -19,7 +19,6 @@
           aria-label="Age"
           placeholder="Age"
       />
-
       <input
           type="text" required
           v-model="retired"
@@ -30,9 +29,6 @@
         <button class="submit" >Back to all players</button>
       </div>
     </form>
-
-    <!--    TODO: trzeba zrobić tak żeby to przycisk zatwierdzał dane i jednocześnie cofał na główną z zawodnikami, nie enter-->
-
   </div>
 </template>
 
@@ -42,7 +38,7 @@ import axios from "axios";
 const baseURL = "http://localhost:3001/players";
 
 export default {
-  name: "PlayerList",
+  name: "AddPlayer",
   data() {
     return {
       players: [],
@@ -67,7 +63,6 @@ export default {
       if (this.firstName.length > 0 && !isNaN(this.age) && this.lastName.length > 0) {
         try {
           const res = await axios.post(baseURL, { firstName: this.firstName, lastName: this.lastName, age: this.age, retired: this.retired === null ? this.retired = false : this.retired === "true"});
-
           this.players = [...this.players, res.data];
 
           this.firstName = "";

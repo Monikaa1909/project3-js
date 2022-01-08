@@ -82,6 +82,11 @@ td {
     color: black;
 }
 
+.btn {
+    font-size: 20px;
+    color: black;
+}
+
 button {
     font-size: 30px;
     /*background-color: aqua;*/

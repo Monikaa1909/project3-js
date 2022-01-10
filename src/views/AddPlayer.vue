@@ -31,9 +31,14 @@
           aria-label="Retired"
           placeholder="Retired"
       />
-      <div>
-        <button class="submit" >Back to all players</button>
+
+      <div class="flex-row">
+        <div class="w-1/5"></div>
+        <button @click="$router.push('/')" >Back to all players</button>
+        <button class="submit" >Add</button>
+        <div class="w-1/5"></div>
       </div>
+      <div class="h-10"></div>
     </form>
   </div>
 </template>
@@ -93,35 +98,4 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-h1 {
-  text-decoration: underline;
-}
-
-li {
-  color: white;
-}
-
-input {
-  width: 100%;
-  padding: 1rem;
-  border-radius: 0.4rem;
-  border: 1px solid #fd9644;
-  margin-bottom: 2rem;
-  font-size: 1.5rem;
-}
-
-.retired {
-  text-decoration: line-through;
-}
-
-tr {
-  font-size: 2rem;
-}
-
-td {
-  padding: 0 4rem;
-  font-size: 1rem;
-}
-</style>
+-->

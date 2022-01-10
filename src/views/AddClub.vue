@@ -96,36 +96,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-h1 {
-  text-decoration: underline;
-}
-
-li {
-  color: white;
-}
-
-input {
-  width: 100%;
-  padding: 0.5rem;
-  border-radius: 0.4rem;
-  border: 1px solid #fd9644;
-  margin-bottom: 0.5rem;
-  font-size: 1.5rem;
-}
-
-.retired {
-  text-decoration: line-through;
-}
-
-tr {
-  font-size: 2rem;
-}
-
-td {
-  padding: 0 4rem;
-  font-size: 1rem;
-}
-
-</style>

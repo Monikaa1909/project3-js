@@ -15,7 +15,7 @@
       </thead>
       <tbody>
       <tr
-          v-for="player of players"
+          v-for="player of filteredList"
           :class="{ retired: player.retired }"
           :key="player.id">
         <td>{{player.firstName}}</td>
@@ -28,6 +28,19 @@
       </tr>
       </tbody>
     </table>
+    <div class="flex-row">
+      <a class="page w-1/5 font-bold" :href="page>0?'?page=0':null">&lt;&lt;</a>
+      <a class="page w-1/5 font-bold" :href="page>0?'?page='+(page-1):null">&lt;</a>
+      <a class="page"
+         v-for="n in pages"
+         :href="n-1!==page ? '?page=' + (n-1) : null"
+         :key="n">
+        {{n}}
+      </a>
+      <a class="page w-1/5 font-bold" :href="page<pages-1?'?page='+(page+1):null">&gt;</a>
+      <a class="page w-1/5 font-bold" :href="page<pages-1?'?page='+(pages-1):null">&gt;&gt;</a>
+      <div class="w-1/5"></div>
+    </div>
   </div>
 </template>
 
@@ -43,7 +56,10 @@ export default {
       firstName: "",
       lastName: "",
       age: null,
-      retired: null
+      retired: null,
+      page: 0,
+      pages: 0,
+
     };
   },
 
@@ -51,6 +67,9 @@ export default {
     try {
       const res = await axios.get(baseURL);
       this.players = res.data;
+      this.pages = Math.ceil(this.players.length / 6);
+      const query = new URLSearchParams(location.search);
+      this.page = +query.get("page");
     } catch (e) {
       console.error(e);
     }
@@ -59,6 +78,12 @@ export default {
   methods: {
     toggleToRemove(router, id) {
       router.push({path: `/removeplayer/${id}`});
+    }
+  },
+
+  computed: {
+    filteredList() {
+      return this.players.slice(this.page * 6, this.page * 6 + 6);
     }
   }
 };

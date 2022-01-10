@@ -17,7 +17,7 @@
       </thead>
       <tbody>
       <tr
-          v-for="club of clubs"
+          v-for="club of filteredList"
           :key="club.id">
         <td>{{club.name}}</td>
         <td>{{club.league}}</td>
@@ -32,10 +32,18 @@
       </tbody>
     </table>
     <div class="flex-row">
-      <div class="w-1/5"></div>
+      <a class="page w-1/5 font-bold" :href="page>0?'?page=0':null">&lt;&lt;</a>
+      <a class="page w-1/5 font-bold" :href="page>0?'?page='+(page-1):null">&lt;</a>
+      <a class="page"
+         v-for="n in pages"
+         :href="n-1!==page ? '?page=' + (n-1) : null"
+         :key="n">
+        {{n}}
+      </a>
+      <a class="page w-1/5 font-bold" :href="page<pages-1?'?page='+(page+1):null">&gt;</a>
+      <a class="page w-1/5 font-bold" :href="page<pages-1?'?page='+(pages-1):null">&gt;&gt;</a>
       <div class="w-1/5"></div>
     </div>
-    <div class="h-10"></div>
   </div>
 </template>
 
@@ -53,7 +61,9 @@ export default {
       currentCoach: "",
       founded: null,
       championsLeagueWinner: null,
-      ground: ""
+      ground: "",
+      page: 0,
+      pages: 0
     };
   },
 
@@ -61,6 +71,9 @@ export default {
     try {
       const res = await axios.get(baseURL);
       this.clubs = res.data;
+      this.pages = Math.ceil(this.clubs.length / 6);
+      const query = new URLSearchParams(location.search);
+      this.page = +query.get("page");
     } catch (e) {
       console.error(e);
     }
@@ -70,11 +83,13 @@ export default {
     toggleToEdit(router, id) {
       router.push({path: `/editclub/${id}`});
     }
+  },
+
+  computed: {
+    filteredList() {
+      return this.clubs.slice(this.page * 6, this.page * 6 + 6);
+    }
   }
 }
 
 </script>
-
-<style scoped>
-
-</style>

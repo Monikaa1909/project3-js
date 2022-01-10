@@ -38,6 +38,11 @@ const routes = [
     component: () => import('../views/AddPlayer')
   },
   {
+    path: '/addclub',
+    name: 'AddClub',
+    component: () => import('../views/AddClub')
+  },
+  {
     path: '/editplayer/:id',
     name: 'EditPlayer',
     component: () => import('../views/EditPlayer')

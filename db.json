@@ -34,6 +34,15 @@
       "founded": "1902-03-06",
       "championsLeagueWinner": false,
       "ground": "Santiago Bernabéu"
+    },
+    {
+      "id": 1,
+      "name": "Pomorzanka Sejny",
+      "league": "xd",
+      "currentCoach": "Jerzy Brzęczek",
+      "founded": "1957-09-01 ",
+      "championsLeagueWinner": false,
+      "ground": "Stadion obok liceum"
     }
   ],
   "contracts": [

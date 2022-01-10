@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit.prevent="editClub($router)">
+    <form @submit.prevent="addClub($router)">
       <input
           type="text" required
           v-model="name"
@@ -49,7 +49,7 @@ import axios from "axios";
 const baseURL = "http://localhost:3001/clubs";
 
 export default {
-  name: "EditClub",
+  name: "AddClub",
 
   data() {
     return {
@@ -66,29 +66,18 @@ export default {
 
   async created() {
     try {
-
-      console.log('Params: ', this.$route.params.id);
-      const res = await axios.get(baseURL + "/" + this.$route.params.id)
-
-      this.id = res.data.id;
-      this.name = res.data.name;
-      this.league = res.data.league;
-      this.currentCoach = res.data.currentCoach;
-
-      this.founded = res.data.founded;
-      this.championsLeagueWinner = res.data.championsLeagueWinner;
-      this.ground = res.data.ground;
-
+      const res = await axios.get(baseURL);
+      this.players = res.data;
     } catch (e) {
       console.error(e);
     }
   },
 
   methods: {
-    async editClub(router) {
+    async addClub(router) {
       if (this.name.length > 0) {
         try {
-          await Promise.all([axios.patch(baseURL + "/" + this.id, {
+          await Promise.all([axios.post(baseURL, {
             id: this.id,
             name: this.name,
             league: this.league,
@@ -102,7 +91,6 @@ export default {
         } catch (e) {
           console.error(e);
         }
-
       }
     }
   }
@@ -139,4 +127,5 @@ td {
   padding: 0 4rem;
   font-size: 1rem;
 }
+
 </style>

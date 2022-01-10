@@ -29,7 +29,7 @@
       </table>
       <div class="flex-row">
         <div class="w-1/5"></div>
-        <button class="w-1/5" @click="$router.push('addplayer')">Add</button>
+        <button class="w-1/5" @click="$router.push('addclub')">Add</button>
         <button class="w-1/5" @click="$router.push('clubstoedit')">Edit</button>
         <button class="w-1/5" @click="$router.push('clubstoremove')">Remove</button>
         <div class="w-1/5"></div>

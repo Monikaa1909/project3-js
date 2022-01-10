@@ -23,14 +23,6 @@
       "age": "60",
       "retired": false,
       "id": 3
-    },
-    {
-      "firstName": "ddsadsa",
-      "lastName": "dsadas",
-      "country": "3213",
-      "age": "321",
-      "retired": false,
-      "id": 4
     }
   ],
   "clubs": [

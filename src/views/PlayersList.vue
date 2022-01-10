@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div class="info"></div>
+    <div class="h-5"></div>
+
     <table id="playersTable">
       <thead>
         <tr>
@@ -7,8 +10,6 @@
           <th>Lastname</th>
           <th>Country</th>
           <th>Age</th>
-          <th>Edit</th>
-          <th>Remove</th>
         </tr>
       </thead>
       <tbody>
@@ -16,20 +17,21 @@
             v-for="player of players"
             :class="{ retired: player.retired }"
             :key="player.id">
-<!--            @click="retiredPlayer(player.id)">-->
           <td>{{player.firstName}}</td>
           <td>{{player.lastName}}</td>
           <td>{{player.country}}</td>
           <td>{{player.age}}</td>
-          <td>
-            <button class="btn btn-edit" @click="toggleToEdit($router, player.id)">Edit</button>
-          </td>
-          <td>
-            <button class="btn btn-remove" @click="toggleToRemove($router, player.id)">Remove</button>
-          </td>
         </tr>
       </tbody>
     </table>
+    <div class="flex-row">
+      <div class="w-1/5"></div>
+      <button class="w-1/5" @click="$router.push('addplayer')">Add</button>
+      <button class="w-1/5" @click="$router.push('playerstoedit')">Edit</button>
+      <button class="w-1/5" @click="$router.push('playerstoremove')">Remove</button>
+      <div class="w-1/5"></div>
+    </div>
+    <div class="h-10"></div>
   </div>
 </template>
 
@@ -62,24 +64,6 @@ export default {
     toggleToEdit(router, id) {
       router.push({path: `/editplayer/${id}`});
     },
-
-    // async retiredPlayer(id) {
-    //   try {
-    //     await axios.patch(`${baseURL}/${id}`, {
-    //       retired: true
-    //     });
-    //
-    //     this.players = this.players.map(player => {
-    //       if (player.id === id) {
-    //         player.retired = true;
-    //       }
-    //
-    //       return player;
-    //     });
-    //   } catch (e) {
-    //     console.error(e);
-    //   }
-    // },
     toggleToRemove(router, id) {
       router.push({path: `/removeplayer/${id}`});
     }
@@ -87,14 +71,4 @@ export default {
 };
 </script>
 
-<style scoped>
 
-input {
-  width: 100%;
-  padding: 1rem;
-  border-radius: 0.4rem;
-  border: 1px solid #fd9644;
-  margin-bottom: 2rem;
-  font-size: 1.5rem;
-}
-</style>

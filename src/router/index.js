@@ -1,43 +1,41 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import TopPlayers from '../views/TopPlayers.vue'
+// import TopPlayers from '../views/TopPlayers.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'TopPlayers',
-    component: TopPlayers
+    name: 'PlayersList',
+    component: () => import('../views/PlayersList.vue')
+  },
+  {
+    path: '/playerstoedit',
+    name: 'PlayersToEdit',
+    component: () => import('../views/PlayersListToEdit.vue')
+  },
+  {
+    path: '/playerstoremove',
+    name: 'PlayersToRemove',
+    component: () => import('../views/PlayersListToRemove.vue')
   },
   {
     path: '/teams',
     name: 'TopTeams',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/TopTeams.vue')
+    component: () => import('../views/TopTeams.vue')
   },
   {
     path: '/addplayer',
     name: 'AddPlayer',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AddPlayer')
+    component: () => import('../views/AddPlayer')
   },
   {
     path: '/editplayer/:id',
     name: 'EditPlayer',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/EditPlayer')
+    component: () => import('../views/EditPlayer')
   },
   {
     path: '/removeplayer/:id',
     name: 'RemovePlayer',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/RemovePlayer')
+    component: () => import('../views/RemovePlayer')
   }
 ]
 

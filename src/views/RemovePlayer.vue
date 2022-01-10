@@ -37,28 +37,31 @@ export default {
     }
   },
   methods: {
-    removePlayer(router) {
+    async removePlayer(router) {
       try {
-        this.players.splice(this.id, 1)
-
-        for (const v of this.players) {
-          axios.delete(baseURL + "/" + v.id)
-        }
-
-        this.players.forEach((v, i) => {
-          v.id = i + 1
-        })
-        //TODO jescze póki co nie działa albo usuwa wszystkie dane dlatego testowanie na własną odpowiedzialność xd
         // for (const v of this.players) {
-        //   Promise.all([axios.post(baseURL, {
+        //   axios.delete(baseURL + "/" + v.id)
+        // }
+
+        await axios.delete(baseURL + "/" + this.id)
+        router.push('/')
+        // return response.data
+        // this.players.splice(this.id, 1)
+
+
+        // this.players.forEach((v, i) => {
+        //   v.id = i + 1
+        // })
+
+        // for (const v of this.players) {
+        //  axios.post(baseURL + "/" + v.id, {
         //     id: v.id,
         //     firstName: v.firstName,
         //     lastName: v.lastName,
         //     age: v.age,
         //     retired: v.retired
-        //   })]);
+        //   });
         // }
-        router.push('/')
       } catch (e) {
         console.log(e)
       }

@@ -56,8 +56,6 @@ export default {
     }
   },
 
-
-
   methods: {
     toggleToEdit(router, id) {
       router.push({path: `/editplayer/${id}`});
@@ -80,7 +78,6 @@ export default {
     //     console.error(e);
     //   }
     // },
-
     toggleToRemove(router, id) {
       router.push({path: `/removeplayer/${id}`});
     }
@@ -98,5 +95,4 @@ input {
   margin-bottom: 2rem;
   font-size: 1.5rem;
 }
-
 </style>

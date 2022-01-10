@@ -7,6 +7,8 @@
           <th>Lastname</th>
           <th>Country</th>
           <th>Age</th>
+          <th>Edit</th>
+          <th>Remove</th>
         </tr>
       </thead>
       <tbody>
@@ -17,7 +19,7 @@
 <!--            @click="retiredPlayer(player.id)">-->
           <td>{{player.firstName}}</td>
           <td>{{player.lastName}}</td>
-          <td>Tu będzie kraj pochodzenia</td>
+          <td>{{player.country}}</td>
           <td>{{player.age}}</td>
           <td>
             <button class="btn btn-edit" @click="toggleToEdit($router, player.id)">Edit</button>

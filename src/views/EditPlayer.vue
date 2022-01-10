@@ -15,6 +15,12 @@
       />
       <input
           type="text" required
+          v-model="country"
+          aria-label="Country"
+          placeholder="Country"
+      />
+      <input
+          type="text" required
           v-model="age"
           aria-label="Age"
           placeholder="Age"
@@ -45,6 +51,7 @@ export default {
       id: null,
       firstName: "",
       lastName: "",
+      country: null,
       age: null,
       retired: null
     };
@@ -59,6 +66,7 @@ export default {
       this.id = res.data.id
       this.firstName = res.data.firstName
       this.lastName = res.data.lastName
+      this.country = res.data.country
       this.age = res.data.age
       this.retired = res.data.retired
       console.log("xddd")
@@ -78,17 +86,13 @@ export default {
             id: this.id,
             firstName: this.firstName,
             lastName: this.lastName,
+            country: this.country,
             age: this.age,
             retired: this.retired === null ? this.retired = false : this.retired === "true"
           })]);
 
           // this.players = [...this.players, res.data]
           this.players[this.id] = res.data
-
-          this.firstName = "";
-          this.lastName = ""
-          this.age = null
-          this.retired = null
         } catch (e) {
           console.error(e);
         }

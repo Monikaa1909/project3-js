@@ -30,38 +30,17 @@ export default {
       // var splited = pathName.split("/")
       this.players = res.data
       this.id = this.$route.params.id
-      console.log("coś tu wgl jest?")
       console.log(this.id)
     } catch (e) {
       console.log(e)
     }
   },
+
   methods: {
     async removePlayer(router) {
       try {
-        // for (const v of this.players) {
-        //   axios.delete(baseURL + "/" + v.id)
-        // }
-
         await axios.delete(baseURL + "/" + this.id)
         router.push('/')
-        // return response.data
-        // this.players.splice(this.id, 1)
-
-
-        // this.players.forEach((v, i) => {
-        //   v.id = i + 1
-        // })
-
-        // for (const v of this.players) {
-        //  axios.post(baseURL + "/" + v.id, {
-        //     id: v.id,
-        //     firstName: v.firstName,
-        //     lastName: v.lastName,
-        //     age: v.age,
-        //     retired: v.retired
-        //   });
-        // }
       } catch (e) {
         console.log(e)
       }

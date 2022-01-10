@@ -15,6 +15,12 @@
       />
       <input
           type="text" required
+          v-model="country"
+          aria-label="Country"
+          placeholder="Country"
+      />
+      <input
+          type="text" required
           v-model="age"
           aria-label="Age"
           placeholder="Age"
@@ -44,6 +50,7 @@ export default {
       players: [],
       firstName: "",
       lastName: "",
+      country: null,
       age: null,
       retired: null
     };
@@ -65,6 +72,7 @@ export default {
           const [res] = await Promise.all([axios.post(baseURL, {
             firstName: this.firstName,
             lastName: this.lastName,
+            country: this.country,
             age: this.age,
             retired: this.retired === null ? this.retired = false : this.retired === "true"
           })]);

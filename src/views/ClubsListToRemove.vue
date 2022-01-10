@@ -12,6 +12,7 @@
         <th>Founded</th>
         <th>CL winner</th>
         <th>Ground</th>
+        <th>Remove</th>
       </tr>
       </thead>
       <tbody>

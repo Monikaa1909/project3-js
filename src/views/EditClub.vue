@@ -125,10 +125,10 @@ li {
 
 input {
   width: 100%;
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 0.4rem;
   border: 1px solid #fd9644;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
   font-size: 1.5rem;
 }
 

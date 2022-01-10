@@ -1,38 +1,50 @@
 <template>
   <div>
-    <form @submit.prevent="editPlayer($router)">
+    <form @submit.prevent="editClub($router)">
       <input
           type="text" required
-          v-model="firstName"
+          v-model="name"
           aria-label="First name"
           placeholder="First name"
       />
       <input
           type="text" required
-          v-model="lastName"
+          v-model="league"
           aria-label="Second name"
           placeholder="Second name"
       />
       <input
           type="text" required
-          v-model="country"
+          v-model="founded"
           aria-label="Country"
           placeholder="Country"
       />
       <input
           type="text" required
-          v-model="age"
+          v-model="currentCoach"
           aria-label="Age"
           placeholder="Age"
       />
       <input
           type="text" required
-          v-model="retired"
+          v-model="founded"
+          aria-label="Retired"
+          placeholder="Retired"
+      />
+      <input
+          type="text" required
+          v-model="championsLeagueWinner"
+          aria-label="Retired"
+          placeholder="Retired"
+      />
+      <input
+          type="text" required
+          v-model="ground"
           aria-label="Retired"
           placeholder="Retired"
       />
       <div>
-        <button class="submit" >Back to all players</button>
+        <button class="submit" >Back to all clubs</button>
       </div>
     </form>
   </div>
@@ -40,20 +52,21 @@
 
 <script>
 import axios from "axios";
-const baseURL = "http://localhost:3001/players";
+const baseURL = "http://localhost:3001/clubs";
 
 export default {
-  name: "EditPlayer",
+  name: "EditClub",
 
   data() {
     return {
-      players: [],
+      clubs: [],
       id: null,
-      firstName: "",
-      lastName: "",
-      country: null,
-      age: null,
-      retired: null
+      name: "",
+      league: "",
+      currentCoach: "",
+      founded: null,
+      championsLeagueWinner: null,
+      ground: null
     };
   },
 
@@ -63,39 +76,38 @@ export default {
       console.log('Params: ', this.$route.params.id);
       const res = await axios.get(baseURL + "/" + this.$route.params.id)
 
-      this.id = res.data.id
-      this.firstName = res.data.firstName
-      this.lastName = res.data.lastName
-      this.country = res.data.country
-      this.age = res.data.age
-      this.retired = res.data.retired
-      console.log("xddd")
+      this.id = res.data.id;
+      this.name = res.data.name;
+      this.league = res.data.league;
+      this.currentCoach = res.data.currentCoach;
+
+      this.founded = res.data.founded;
+      this.championsLeagueWinner = res.data.championsLeagueWinner;
+      this.ground = res.data.ground;
+
     } catch (e) {
       console.error(e);
     }
   },
 
   methods: {
-    async editPlayer(router) {
-      console.log(this.age)
-      console.log(this.lastName)
-      console.log(this.firstName)
-      if (this.firstName.length > 0 && !isNaN(this.age) && this.lastName.length > 0) {
+    async editClub(router) {
+      if (this.name.length > 0) {
         try {
           await Promise.all([axios.patch(baseURL + "/" + this.id, {
             id: this.id,
-            firstName: this.firstName,
-            lastName: this.lastName,
-            country: this.country,
-            age: this.age,
-            retired: this.retired === null ? this.retired = false : this.retired === "true"
+            name: this.name,
+            league: this.league,
+            currentCoach: this.currentCoach,
+            founded: this.founded,
+            championsLeagueWinner: this.championsLeagueWinner === null ? this.championsLeagueWinner = false : this.championsLeagueWinner === "true"
           })]);
 
+          router.push('/clubs')
         } catch (e) {
           console.error(e);
         }
 
-        router.push('/')
       }
     }
   }
@@ -104,7 +116,7 @@ export default {
 
 <style scoped>
 h1 {
-text-decoration: underline;
+  text-decoration: underline;
 }
 
 li {

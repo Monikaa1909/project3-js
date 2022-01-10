@@ -3,7 +3,7 @@
     <div class="info" >Select the player you want to edit:</div>
     <div class="h-5"></div>
 
-    <table id="playersTable">
+    <table id="table">
       <thead>
         <tr>
           <th>Firstname</th>
@@ -60,9 +60,6 @@ export default {
     toggleToEdit(router, id) {
       router.push({path: `/editplayer/${id}`});
     },
-    toggleToRemove(router, id) {
-      router.push({path: `/removeplayer/${id}`});
-    }
   }
 };
 </script>

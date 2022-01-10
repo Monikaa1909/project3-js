@@ -18,9 +18,19 @@ const routes = [
     component: () => import('../views/PlayersListToRemove.vue')
   },
   {
-    path: '/teams',
-    name: 'TopTeams',
-    component: () => import('../views/TopTeams.vue')
+    path: '/clubs',
+    name: 'ClubList',
+    component: () => import('../views/ClubsList.vue')
+  },
+  {
+    path: '/clubstoedit',
+    name: 'clubsToEdit',
+    component: () => import('../views/ClubsListToEdit.vue')
+  },
+  {
+    path: '/clubstoremove',
+    name: 'clubsToRemove',
+    component: () => import('../views/ClubsListToRemove.vue')
   },
   {
     path: '/addplayer',
@@ -36,6 +46,16 @@ const routes = [
     path: '/removeplayer/:id',
     name: 'RemovePlayer',
     component: () => import('../views/RemovePlayer')
+  },
+  {
+    path: '/editclub/:id',
+    name: 'EditClub',
+    component: () => import('../views/EditClub')
+  },
+  {
+    path: '/removeclub/:id',
+    name: 'RemoveClub',
+    component: () => import('../views/RemoveClub')
   }
 ]
 

@@ -1,7 +1,7 @@
 <template>
   <div id="nav">
     <router-link to="/">TOP players</router-link> |
-    <router-link to="/teams">TOP teams</router-link>
+    <router-link to="/clubs">TOP teams</router-link>
   </div>
 
   <div class="flex flex-col">

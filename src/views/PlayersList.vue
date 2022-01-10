@@ -3,7 +3,7 @@
     <div class="info"></div>
     <div class="h-5"></div>
 
-    <table id="playersTable">
+    <table id="table">
       <thead>
         <tr>
           <th>Firstname</th>
@@ -40,7 +40,7 @@ import axios from "axios";
 const baseURL = "http://localhost:3001/players";
 
 export default {
-  name: "PlayerList",
+  name: "PlayersList",
   data() {
     return {
       players: [],
@@ -59,15 +59,6 @@ export default {
       console.error(e);
     }
   },
-
-  methods: {
-    toggleToEdit(router, id) {
-      router.push({path: `/editplayer/${id}`});
-    },
-    toggleToRemove(router, id) {
-      router.push({path: `/removeplayer/${id}`});
-    }
-  }
 };
 </script>
 

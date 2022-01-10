@@ -28,7 +28,12 @@
   "clubs": [
     {
       "id": 0,
-      "name": "Real Madryt"
+      "name": "Real Madryt",
+      "league": "Lique 1",
+      "currentCoach": "Carlo Ancelotti",
+      "founded": "1902-03-06",
+      "championsLeagueWinner": false,
+      "ground": "Santiago Bernabéu"
     }
   ],
   "contracts": [

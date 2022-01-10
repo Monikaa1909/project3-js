@@ -1,8 +1,12 @@
 <template>
   <div>
+    <div class="info"></div>
+    <div class="h-5"></div>
+    <div class="msg">
       <h1>Na pewno chcesz usunąć tego gracza?</h1>
+    </div>
     <button class="btn btn-no" @click="removePlayer($router, $event)">Tak</button>
-        <button class="btn btn-no" @click="$router.push('/')">Nie</button>
+    <button class="btn btn-no" @click="$router.push('/')">Nie</button>
   </div>
 </template>
 

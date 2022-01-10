@@ -37,9 +37,14 @@
           aria-label="Ground"
           placeholder="Ground"
       />
-      <div>
-        <button class="submit" >Back to all clubs</button>
+
+      <div class="flex-row">
+        <div class="w-1/5"></div>
+        <button @click="$router.push('/clubs')" >Back to all clubs</button>
+        <button class="submit" >Add</button>
+        <div class="w-1/5"></div>
       </div>
+      <div class="h-10"></div>
     </form>
   </div>
 </template>

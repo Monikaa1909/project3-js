@@ -1,6 +1,10 @@
 <template>
   <div>
-    <h1>Na pewno chcesz usunąć ten klub?</h1>
+    <div class="info"></div>
+    <div class="h-5"></div>
+    <div class="msg">
+      <h1>Na pewno chcesz usunąć ten klub?</h1>
+    </div>
     <button class="btn btn-no" @click="removeClub($router, $event)">Tak</button>
     <button class="btn btn-no" @click="$router.push('/clubs')">Nie</button>
   </div>

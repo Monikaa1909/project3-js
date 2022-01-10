@@ -32,7 +32,7 @@
           placeholder="Retired"
       />
       <div>
-        <button class="submit" >Back to all players</button>
+        <button class="submit">Done</button>
       </div>
     </form>
   </div>
@@ -101,35 +101,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-h1 {
-text-decoration: underline;
-}
-
-li {
-  color: white;
-}
-
-input {
-  width: 100%;
-  padding: 1rem;
-  border-radius: 0.4rem;
-  border: 1px solid #fd9644;
-  margin-bottom: 2rem;
-  font-size: 1.5rem;
-}
-
-.retired {
-  text-decoration: line-through;
-}
-
-tr {
-  font-size: 2rem;
-}
-
-td {
-  padding: 0 4rem;
-  font-size: 1rem;
-}
-</style>

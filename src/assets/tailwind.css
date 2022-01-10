@@ -49,14 +49,28 @@ html, body {
     height: 10%;
 }
 
-#table {
+table {
     width: 100%;
     height: 300px;
     border-top-width: 1px;
     border-left-width: 1px;
-    border-right-width: 3px;
-    border-bottom-width: 3px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
     border-color: white;
+}
+
+.tableedit tbody th {
+    background-color: #4f5b62;
+    font-size: 15px;
+    color: black;
+}
+
+.tableedit tr:hover {
+    background-color: white;
+}
+
+.tableedit tbody tr:hover {
+    background-color: white;
 }
 
 .info {
@@ -68,10 +82,29 @@ html, body {
     color: #f6b93b;
 }
 
+.msg {
+    height: 150px;
+    width: 100%;
+    border-top-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    background-color: #4f5b62;
+    border-color: black;
+    color: #f6b93b;
+    text-align-all: center;
+}
+
 tr {
     background-color: #000a12;
     color: white;
     font-size: 30px;
+}
+
+tbody th {
+    background-color: #ffffff;
+    font-size: 20px;
+    color: black;
 }
 
 td {
@@ -89,16 +122,21 @@ td {
     padding-right: 5px;
     border-top-width: 1px;
     border-left-width: 1px;
-    border-right-width: 3px;
-    border-bottom-width: 3px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+}
+
+.page:hover {
+    background-color: #f6b93b;
 }
 
 .singleBtn {
     margin: 0px;
     width: 100px;
+    min-width: 100px;
     padding: 2px;
     font-size: 20px;
-    color: black;
+    color: #f6b93b;
     text-transform: uppercase;
 }
 
@@ -109,10 +147,18 @@ button {
     border-color: #000a12;
     border-top-width: 1px;
     border-left-width: 1px;
-    border-right-width: 3px;
-    border-bottom-width: 3px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
     background-color: #4f5b62;
     margin: 20px;
+}
+
+button:hover {
+    background-color: #f6b93b;
+}
+
+.edit {
+
 }
 
 button:focus {
@@ -140,5 +186,5 @@ input {
 
 input:focus {
     outline-width: 3px;
-    outline-color: #fd9644;
+    outline-color: #f6b93b;
 }

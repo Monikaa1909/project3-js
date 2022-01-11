@@ -63,15 +63,6 @@ table {
     opacity: 0.7;
 }
 
-.editable tbody tr:hover {
-    cursor: pointer;
-    background-color: #f6b93b;
-}
-
-.editable tbody tr:hover td {
-    background-color: transparent;
-}
-
 .info {
     height: 40px;
     font-size: 20px;
@@ -106,6 +97,15 @@ td {
     background-color: #ffffff;
     font-size: 20px;
     color: black;
+}
+
+tbody tr:hover {
+    cursor: pointer;
+    background-color: #f6b93b;
+}
+
+tbody tr:hover td {
+    background-color: transparent;
 }
 
 .page {
@@ -150,14 +150,6 @@ button {
 
 button:hover {
     background-color: #f6b93b;
-}
-
-.edit {
-
-}
-
-button:focus {
-
 }
 
 form {

@@ -3,18 +3,20 @@
     <div class="info" >Select the player you want to edit:</div>
     <div class="h-5"></div>
 
-    <table id="table">
+    <table class="editable">
       <thead>
         <tr>
           <th>Firstname</th>
           <th>Lastname</th>
           <th>Country</th>
           <th>Age</th>
-          <th>Edit</th>
+<!--          <th>Edit</th>-->
         </tr>
       </thead>
       <tbody>
         <tr
+
+            @click="toggleToEdit($router, player.id)"
             v-for="player of filteredList"
             :class="{ retired: player.retired }"
             :key="player.id">
@@ -22,9 +24,9 @@
           <td>{{player.lastName}}</td>
           <td>{{player.country}}</td>
           <td>{{player.age}}</td>
-          <td>
-            <button class="singleBtn" @click="toggleToEdit($router, player.id)">Edit</button>
-          </td>
+<!--          <td>-->
+<!--            <button class="singleBtn" @click="toggleToEdit($router, player.id)">Edit</button>-->
+<!--          </td>-->
         </tr>
       </tbody>
     </table>

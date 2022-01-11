@@ -1,36 +1,56 @@
 <template>
   <div>
+    <div class="info"></div>
+    <div class="h-5"></div>
+
     <form @submit.prevent="editPlayer($router)">
-      <input
-          type="text" required
-          v-model="firstName"
-          aria-label="First name"
-          placeholder="First name"
-      />
-      <input
-          type="text" required
-          v-model="lastName"
-          aria-label="Second name"
-          placeholder="Second name"
-      />
-      <input
-          type="text" required
-          v-model="country"
-          aria-label="Country"
-          placeholder="Country"
-      />
-      <input
-          type="text" required
-          v-model="age"
-          aria-label="Age"
-          placeholder="Age"
-      />
-      <input
-          type="text" required
-          v-model="retired"
-          aria-label="Retired"
-          placeholder="Retired"
-      />
+      <div class="editfield flex-row">
+        <label class="editlabel">Firstname:</label>
+        <input
+            type="text" required
+            v-model="firstName"
+            aria-label="First name"
+            placeholder="First name"
+        />
+      </div>
+      <div class="editfield flex-row">
+        <label class="editlabel">Lastame:</label>
+        <input
+            type="text" required
+            v-model="lastName"
+            aria-label="Second name"
+            placeholder="Second name"
+        />
+      </div>
+      <div class="editfield flex-row">
+        <label class="editlabel">Country:</label>
+        <input
+            type="text" required
+            v-model="country"
+            aria-label="Country"
+            placeholder="Country"
+        />
+      </div>
+      <div class="editfield flex-row">
+        <label class="editlabel">Age:</label>
+        <input
+            type="text" required
+            v-model="age"
+            aria-label="Age"
+            placeholder="Age"
+        />
+      </div>
+      <div class="editfield flex-row">
+        <label class="editlabel">Retired:</label>
+        <select
+            class="appearance-none"
+            v-model="retired"
+            aria-label="Retired"
+            placeholder="Retired">
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
       <div>
         <button class="submit">Done</button>
       </div>

@@ -3,7 +3,7 @@
     <div class="info"></div>
     <div class="h-5"></div>
     <div class="msg">
-      <h1>Na pewno chcesz usunąć ten klub?</h1>
+      Are you sure you want to delete this club?
     </div>
     <button class="btn btn-no" @click="removeClub($router, $event)">Tak</button>
     <button class="btn btn-no" @click="$router.push('/clubs')">Nie</button>

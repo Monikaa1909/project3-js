@@ -51,7 +51,7 @@ html, body {
 
 table {
     width: 100%;
-    height: 300px;
+    max-height: 300px;
     border-top-width: 1px;
     border-left-width: 1px;
     border-right-width: 5px;
@@ -59,18 +59,17 @@ table {
     border-color: white;
 }
 
-.tableedit tbody th {
-    background-color: #4f5b62;
-    font-size: 15px;
-    color: black;
+.editable {
+    opacity: 0.7;
 }
 
-.tableedit tr:hover {
-    background-color: white;
+.editable tbody tr:hover {
+    cursor: pointer;
+    background-color: #f6b93b;
 }
 
-.tableedit tbody tr:hover {
-    background-color: white;
+.editable tbody tr:hover td {
+    background-color: transparent;
 }
 
 .info {
@@ -92,19 +91,15 @@ table {
     background-color: #4f5b62;
     border-color: black;
     color: #f6b93b;
-    text-align-all: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 tr {
     background-color: #000a12;
     color: white;
     font-size: 30px;
-}
-
-tbody th {
-    background-color: #ffffff;
-    font-size: 20px;
-    color: black;
 }
 
 td {
@@ -166,15 +161,52 @@ button:focus {
 }
 
 form {
-    margin: 0;
+    margin: 0px;
     width: 100%;
-    padding-left: 200px;
+    padding-left: 100px;
     padding-right: 200px;
+}
+
+.editfield {
+    width: 100%;
+    display: flex;
+    margin: 5px;
+}
+
+label {
+    width: 35%;
+    margin: 0;
+    padding: 10px;
+    font-size: 20px;
+    border-color: #4f5b62;
+    display: flex;
+    align-items: end;
+    justify-content: right;
 }
 
 input {
     margin: 0;
-    width: 100%;
+    width: 65%;
+    padding: 10px;
+    font-size: 20px;
+    border-color: #4f5b62;
+    border-top-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    /*display: flex;*/
+    /*align-items: ;*/
+    /*justify-content: right;*/
+}
+
+input:focus {
+    outline-width: 3px;
+    outline-color: #f6b93b;
+}
+
+select {
+    margin: 0;
+    width: 65%;
     padding: 10px;
     font-size: 20px;
     border-color: #4f5b62;
@@ -184,7 +216,7 @@ input {
     border-bottom-width: 3px;
 }
 
-input:focus {
+select:focus {
     outline-width: 3px;
     outline-color: #f6b93b;
 }

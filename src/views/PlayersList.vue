@@ -40,7 +40,7 @@
     </div>
 
     <div class="flex-row">
-      <button class="w-1/5 " @click="$router.push('addplayer')">Add</button>
+      <button class="transition duration-150 ease-in-out w-1/5 " @click="$router.push('addplayer')">Add</button>
       <button class="w-1/5" @click="$router.push('playerstoedit')">Edit</button>
       <button class="w-1/5" @click="$router.push('playerstoremove')">Remove</button>
       <div class="w-1/5"></div>

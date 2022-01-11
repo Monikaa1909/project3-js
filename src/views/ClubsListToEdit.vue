@@ -3,7 +3,7 @@
     <div class="info"></div>
     <div class="h-5"></div>
 
-    <table id="table">
+    <table class="editable">
       <thead>
       <tr>
         <th>Name</th>
@@ -12,11 +12,11 @@
         <th>Founded</th>
         <th>CL winner</th>
         <th>Ground</th>
-        <th>Edit</th>
       </tr>
       </thead>
       <tbody>
       <tr
+          @click="toggleToEdit($router, club.id)"
           v-for="club of filteredList"
           :key="club.id">
         <td>{{club.name}}</td>
@@ -25,9 +25,6 @@
         <td>{{club.founded}}</td>
         <td>{{club.championsLeagueWinner}}</td>
         <td>{{club.ground}}</td>
-        <td>
-          <button class="singleBtn" @click="toggleToEdit($router, club.id)">Edit</button>
-        </td>
       </tr>
       </tbody>
     </table>

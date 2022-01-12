@@ -2,7 +2,24 @@
   <div>
     <div class="info"></div>
     <div class="h-5"></div>
-
+    <div class="flex-row">
+      <select
+          class="filter"
+          @change="sort($event)">
+        <option>No sorting</option>
+        <option>Sort by firstname</option>
+        <option>Sort by lastname</option>
+        <option>Sort by country</option>
+        <option>Sort by age</option>
+      </select>
+      <input type="text"
+             class="filter"
+             placeholder="Search by yourself 🔍"
+             value=""
+             @keyup.enter="search($event)"
+      />
+      <div class="w-1/5"></div>
+    </div>
     <table id="table">
       <thead>
         <tr>
@@ -47,20 +64,6 @@
       <div class="w-1/5"></div>
     </div>
     <div class="h-10"></div>
-
-    <div class="flex-row">
-      <select
-          class="filter"
-          @change="sort(this.value)">
-        <option value="0">No sorting</option>
-        <option value="1">Sort by firstname</option>
-        <option>Sort by lastname</option>
-        <option>Sort by country</option>
-        <option>Sort by age</option>
-      </select>
-
-      <div class="w-1/5"></div>
-    </div>
   </div>
 </template>
 
@@ -73,10 +76,6 @@ export default {
   data() {
     return {
       players: [],
-      // firstName: "",
-      // lastName: "",
-      // age: null,
-      // retired: null,
       page: 0,
       pages: 0
     };
@@ -98,19 +97,42 @@ export default {
     toggleToDetail(router, id) {
       router.push({path: `/playerdetail/${id}`});
     },
-    async sort(value) {
+    async sort(event) {
+      let url = baseURL;
       try {
-        // if (value == 0) {
-        //   const res = await axios.get(baseURL + "?_sort=firstName&order=asc");
-        // } else if (value == 1) {
-        //   const res = await axios.get(baseURL + "?_sort=firstName&order=asc");
-        // } else {
-        //   const res = await axios.get(baseURL + "?_sort=firstName&order=asc");
-        // }
-        if (value == 0) {
-          console.log("blabla");
+        switch (event.target.value) {
+          case "Sort by lastname":
+            url = baseURL + "?_sort=lastName&order=asc";
+            break;
+          case "Sort by firstname":
+            url = baseURL + "?_sort=firstName&order=asc";
+            break;
+          case "Sort by country":
+            url = baseURL + "?_sort=country&order=asc";
+            break;
+          case "Sort by age":
+            url = baseURL + "?_sort=age&order=asc";
+            break;
+          case "No sorting":
+            break;
+          default:
+            break;
         }
-        const res = await axios.get(baseURL + "?_sort=firstName&order=asc");
+        const res = await axios.get(url);
+        this.players = res.data;
+        this.pages = Math.ceil(this.players.length / 6);
+        const query = new URLSearchParams(location.search);
+        this.page = +query.get("page");
+      } catch (e) {
+        console.error(e);
+      }
+    },
+
+    async search(event) {
+      // let url = baseURL;
+      try {
+        console.log(event.target.value);
+        const res = await axios.get(baseURL + "?q=" + event.target.value);
         this.players = res.data;
         this.pages = Math.ceil(this.players.length / 6);
         const query = new URLSearchParams(location.search);

@@ -126,12 +126,12 @@ tbody tr:hover td {
 }
 
 .filter {
-    width: 230px;
+    font-size: 15px;
+    width: 200px;
     margin-left: 5px;
-    /*min-width: 100px;*/
-    /*padding: 2px;*/
-    /*font-size: 20px;*/
-    /*color: #f6b93b;*/
+    margin-bottom: 15px;
+    padding: 2px;
+    height: 30px;
     border-color: black;
     text-transform: uppercase;
     float: right;
@@ -188,9 +188,6 @@ input {
     border-left-width: 1px;
     border-right-width: 5px;
     border-bottom-width: 5px;
-    /*display: flex;*/
-    /*align-items: ;*/
-    /*justify-content: right;*/
 }
 
 input:focus {

@@ -40,7 +40,7 @@
     </div>
 
     <div class="flex-row">
-      <button class="w-1/5" >Add contract</button>
+      <button class="w-1/5" @click="toggleToAddContract($router, playerId)">Add contract</button>
       <button class="w-1/5" >Edit</button>
       <button class="w-1/5" >Remove contract</button>
       <div class="w-1/5"></div>
@@ -60,19 +60,27 @@ export default {
     return {
       contracts: [],
       page: 0,
-      pages: 0
+      pages: 0,
+      playerId: null
     };
   },
 
   async created() {
     try {
-      const res = await axios.get(baseURL + "playerId=" + this.$route.params.id)
+      this.playerId = this.$route.params.id
+      const res = await axios.get(baseURL + "playerId=" + this.playerId)
       this.contracts = res.data;
       this.pages = Math.ceil(this.contracts.length / 6);
       const query = new URLSearchParams(location.search);
       this.page = +query.get("page");
     } catch (e) {
       console.error(e);
+    }
+  },
+
+  methods: {
+    toggleToAddContract(router, id) {
+      router.push({path: `/addcontract/${id}`});
     }
   },
 

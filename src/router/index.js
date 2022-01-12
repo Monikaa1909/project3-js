@@ -43,6 +43,11 @@ const routes = [
     component: () => import('../views/AddClub')
   },
   {
+    path: '/addcontract/:id',
+    name: 'AddContract',
+    component: () => import('../views/AddContract')
+  },
+  {
     path: '/editplayer/:id',
     name: 'EditPlayer',
     component: () => import('../views/EditPlayer')

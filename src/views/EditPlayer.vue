@@ -47,8 +47,7 @@
             v-model="retired"
             aria-label="Retired"
             placeholder="Retired">
-          <option>Yes</option>
-          <option>No</option>
+          <option v-for="bool in bools" v-bind:key=bool :value="bool">{{bool}}</option>
         </select>
       </div>
       <div>
@@ -73,14 +72,13 @@ export default {
       lastName: "",
       country: null,
       age: null,
-      retired: null
+      retired: null,
+      bools: ['No', 'Yes']
     };
   },
 
   async created() {
     try {
-
-      console.log('Params: ', this.$route.params.id);
       const res = await axios.get(baseURL + "/" + this.$route.params.id)
 
       this.id = res.data.id
@@ -88,8 +86,7 @@ export default {
       this.lastName = res.data.lastName
       this.country = res.data.country
       this.age = res.data.age
-      this.retired = res.data.retired
-      console.log("xddd")
+      this.retired = res.data.retired === true ? 'Yes' : 'No'
     } catch (e) {
       console.error(e);
     }
@@ -108,7 +105,7 @@ export default {
             lastName: this.lastName,
             country: this.country,
             age: this.age,
-            retired: this.retired === null ? this.retired = false : this.retired === "true"
+            retired: this.retired === "No" ? this.retired = false : this.retired = true
           })]);
 
         } catch (e) {

@@ -46,8 +46,7 @@
               v-model="championsLeagueWinner"
               aria-label="Is champions league winner?"
               placeholder="Is champions league winner?">
-            <option>Yes</option>
-            <option>No</option>
+            <option v-for="bool in bools" v-bind:key=bool :value="bool">{{bool}}</option>
           </select>
       </div>
       <div class="editfield flex-row">
@@ -81,7 +80,8 @@ export default {
       currentCoach: "",
       founded: null,
       championsLeagueWinner: null,
-      ground: null
+      ground: null,
+      bools:  ['No', 'Yes']
     };
   },
 
@@ -97,7 +97,7 @@ export default {
       this.currentCoach = res.data.currentCoach;
 
       this.founded = res.data.founded;
-      this.championsLeagueWinner = res.data.championsLeagueWinner;
+      this.championsLeagueWinner = res.data.championsLeagueWinner === true ? 'Yes' : 'No'
       this.ground = res.data.ground;
 
     } catch (e) {

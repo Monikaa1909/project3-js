@@ -207,7 +207,26 @@ select {
     border-bottom-width: 5px;
 }
 
+.player {
+    margin: 0;
+    width: 65%;
+    padding: 10px;
+    font-size: 20px;
+    border-color: #4f5b62;
+    border-top-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    text-align: left;
+    background-color: white;
+    color: #f6b93b;
+}
+
 select:focus {
     outline-width: 5px;
     outline-color: #f6b93b;
+}
+
+.loader div:first-child {
+    animation-delay: 0.1s;
 }

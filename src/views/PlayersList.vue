@@ -97,6 +97,7 @@ export default {
     toggleToDetail(router, id) {
       router.push({path: `/playerdetail/${id}`});
     },
+
     async sort(event) {
       let url = baseURL;
       try {

@@ -2,7 +2,24 @@
   <div>
     <div class="info" >Select the player you want to remove:</div>
     <div class="h-5"></div>
-
+    <div class="flex-row">
+      <select
+          class="filter"
+          @change="sort($event)">
+        <option>No sorting</option>
+        <option>Sort by firstname</option>
+        <option>Sort by lastname</option>
+        <option>Sort by country</option>
+        <option>Sort by age</option>
+      </select>
+      <input type="text"
+             class="filter"
+             placeholder="Search by yourself 🔍"
+             value=""
+             @keyup.enter="search($event)"
+      />
+      <div class="w-1/5"></div>
+    </div>
     <table class="editable">
       <thead>
       <tr>
@@ -75,7 +92,51 @@ export default {
   methods: {
     toggleToRemove(router, id) {
       router.push({path: `/removeplayer/${id}`});
-    }
+    },
+    async sort(event) {
+      let url = baseURL;
+      try {
+        switch (event.target.value) {
+          case "Sort by lastname":
+            url = baseURL + "?_sort=lastName&order=asc";
+            break;
+          case "Sort by firstname":
+            url = baseURL + "?_sort=firstName&order=asc";
+            break;
+          case "Sort by country":
+            url = baseURL + "?_sort=country&order=asc";
+            break;
+          case "Sort by age":
+            url = baseURL + "?_sort=age&order=asc";
+            break;
+          case "No sorting":
+            break;
+          default:
+            break;
+        }
+        const res = await axios.get(url);
+        this.players = res.data;
+        this.pages = Math.ceil(this.players.length / 6);
+        const query = new URLSearchParams(location.search);
+        this.page = +query.get("page");
+      } catch (e) {
+        console.error(e);
+      }
+    },
+
+    async search(event) {
+      // let url = baseURL;
+      try {
+        console.log(event.target.value);
+        const res = await axios.get(baseURL + "?q=" + event.target.value);
+        this.players = res.data;
+        this.pages = Math.ceil(this.players.length / 6);
+        const query = new URLSearchParams(location.search);
+        this.page = +query.get("page");
+      } catch (e) {
+        console.error(e);
+      }
+    },
   },
 
   computed: {

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="h-5"></div>
     <form @submit.prevent="addPlayer($router)">
       <input
           type="text" required

@@ -2,7 +2,6 @@
   <div>
     <div class="info"></div>
     <div class="h-5"></div>
-
     <table id="table">
       <thead>
       <tr>

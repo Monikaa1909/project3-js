@@ -124,7 +124,7 @@
   "clubs": [
     {
       "id": 0,
-      "name": "Real Madrytc",
+      "name": "Real Madryt",
       "league": "Lique 1",
       "currentCoach": "Carlo Ancelotti",
       "founded": "1902-03-06",
@@ -148,6 +148,15 @@
       "founded": "1900-02-27 ",
       "championsLeagueWinner": true,
       "ground": "Allianz Arena"
+    },
+    {
+      "id": 3,
+      "name": "Z",
+      "league": "a",
+      "currentCoach": "xsx",
+      "founded": "1000",
+      "ground": "dewc",
+      "championsLeagueWinner": true
     }
   ],
   "contracts": [
@@ -174,6 +183,30 @@
       "years": "2010–2014",
       "matches": 131,
       "goals": 74
+    },
+    {
+      "playerId": 1,
+      "clubId": 1,
+      "years": "2010-2020",
+      "matches": "12",
+      "goals": "11",
+      "id": 3
+    },
+    {
+      "playerId": 1,
+      "clubId": 3,
+      "years": "1",
+      "matches": "1",
+      "goals": "1",
+      "id": 4
+    },
+    {
+      "playerId": 1,
+      "clubId": 1,
+      "years": "2",
+      "matches": "2",
+      "goals": "2",
+      "id": 5
     }
   ]
 }

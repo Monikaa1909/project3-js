@@ -1,20 +1,23 @@
 <template>
   <div>
-    <div class="info"></div>
     <div class="h-5"></div>
-    <div class="msg">
-      {{firstName}} {{lastName}}
-    </div>
     <form @submit.prevent="addContract($router)">
       <div class="editfield flex-row">
+        <label class="editlabel">Player:</label>
+        <div class="player">{{firstName}} {{lastName}}</div>
+      </div>
+
+      <div class="editfield flex-row">
         <label class="editlabel">Club:</label>
-<!--        <option v-for="club in clubs" v-bind:key=club>{{club.name}}</option>-->
         <select
             class="appearance-none"
             @change="getClubId($event, $event.target.selectedIndex)"
             aria-label="Club"
-            placeholder="Club">
-          <option v-for="club in clubs" v-bind:key="club.name">{{club.name}}</option>
+            placeholder="Club"
+        >
+          <option
+              v-for="club in clubs"
+              v-bind:key="club.id">{{club.name}}</option>
         </select>
       </div>
       <div class="editfield flex-row">

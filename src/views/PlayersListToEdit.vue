@@ -15,7 +15,6 @@
       </thead>
       <tbody>
         <tr
-
             @click="toggleToEdit($router, player.id)"
             v-for="player of filteredList"
             :class="{ retired: player.retired }"

@@ -2,7 +2,7 @@
   "players": [
     {
       "firstName": "Robert",
-      "lastName": "Lewandowsk",
+      "lastName": "Lewandowski",
       "country": "Poland",
       "age": "31",
       "retired": false,
@@ -133,19 +133,47 @@
     },
     {
       "id": 1,
-      "name": "Pomorzanka Sejny",
-      "league": "xd",
-      "currentCoach": "Jerzy Brzęczek",
-      "founded": "1957-09-01 ",
+      "name": "Borussia Dortmund",
+      "league": "Bundesliga",
+      "currentCoach": "Marco Rose",
+      "founded": "1909-12-19 ",
       "championsLeagueWinner": true,
-      "ground": "Stadion obok liceum"
+      "ground": "Signal Iduna Park"
+    },
+    {
+      "id": 2,
+      "name": "Bayern Monachium",
+      "league": "Bundesliga",
+      "currentCoach": "Julian Nagelsmann",
+      "founded": "1900-02-27 ",
+      "championsLeagueWinner": true,
+      "ground": "Allianz Arena"
     }
   ],
   "contracts": [
     {
       "id": 0,
-      "idPlayer": "2",
-      "idClub": "0"
+      "playerId": "1",
+      "clubId": "2",
+      "years": "2014–2022",
+      "matches": 237,
+      "goals": 223
+    },
+    {
+      "id": 1,
+      "playerId": "1",
+      "clubId": "1",
+      "years": "2010–2014",
+      "matches": 131,
+      "goals": 74
+    },
+    {
+      "id": 2,
+      "playerId": "2",
+      "clubId": "1",
+      "years": "2010–2014",
+      "matches": 131,
+      "goals": 74
     }
   ]
 }

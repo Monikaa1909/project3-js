@@ -14,6 +14,7 @@
       </thead>
       <tbody>
         <tr
+            @click="toggleToDetail($router, player.id)"
             v-for="player of filteredList"
             :class="{ retired: player.retired }"
             :key="player.id">
@@ -40,12 +41,26 @@
     </div>
 
     <div class="flex-row">
-      <button class="w-1/5" @click="$router.push('addplayer')">Add</button>
+      <button class="w-1/5 " @click="$router.push('addplayer')">Add</button>
       <button class="w-1/5" @click="$router.push('playerstoedit')">Edit</button>
       <button class="w-1/5" @click="$router.push('playerstoremove')">Remove</button>
       <div class="w-1/5"></div>
     </div>
     <div class="h-10"></div>
+
+    <div class="flex-row">
+      <select
+          class="filter"
+          @change="sort(this.value)">
+        <option value="0">No sorting</option>
+        <option value="1">Sort by firstname</option>
+        <option>Sort by lastname</option>
+        <option>Sort by country</option>
+        <option>Sort by age</option>
+      </select>
+
+      <div class="w-1/5"></div>
+    </div>
   </div>
 </template>
 
@@ -58,10 +73,10 @@ export default {
   data() {
     return {
       players: [],
-      firstName: "",
-      lastName: "",
-      age: null,
-      retired: null,
+      // firstName: "",
+      // lastName: "",
+      // age: null,
+      // retired: null,
       page: 0,
       pages: 0
     };
@@ -79,11 +94,39 @@ export default {
     }
   },
 
+  methods: {
+    toggleToDetail(router, id) {
+      router.push({path: `/playerdetail/${id}`});
+    },
+    async sort(value) {
+      try {
+        // if (value == 0) {
+        //   const res = await axios.get(baseURL + "?_sort=firstName&order=asc");
+        // } else if (value == 1) {
+        //   const res = await axios.get(baseURL + "?_sort=firstName&order=asc");
+        // } else {
+        //   const res = await axios.get(baseURL + "?_sort=firstName&order=asc");
+        // }
+        if (value == 0) {
+          console.log("blabla");
+        }
+        const res = await axios.get(baseURL + "?_sort=firstName&order=asc");
+        this.players = res.data;
+        this.pages = Math.ceil(this.players.length / 6);
+        const query = new URLSearchParams(location.search);
+        this.page = +query.get("page");
+      } catch (e) {
+        console.error(e);
+      }
+    },
+  },
+
   computed: {
     filteredList() {
       return this.players.slice(this.page * 6, this.page * 6 + 6);
     }
   }
+
 };
 </script>
 

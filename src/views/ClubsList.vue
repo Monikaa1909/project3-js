@@ -16,6 +16,7 @@
         </thead>
         <tbody>
         <tr
+            class="pointer-events-none"
             v-for="club of filteredList"
             :key="club.id">
           <td>{{club.name}}</td>

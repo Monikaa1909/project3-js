@@ -125,14 +125,16 @@ tbody tr:hover td {
     background-color: #f6b93b;
 }
 
-.singleBtn {
-    margin: 0px;
-    width: 100px;
-    min-width: 100px;
-    padding: 2px;
-    font-size: 20px;
-    color: #f6b93b;
+.filter {
+    width: 230px;
+    margin-left: 5px;
+    /*min-width: 100px;*/
+    /*padding: 2px;*/
+    /*font-size: 20px;*/
+    /*color: #f6b93b;*/
+    border-color: black;
     text-transform: uppercase;
+    float: right;
 }
 
 button {
@@ -184,15 +186,15 @@ input {
     border-color: #4f5b62;
     border-top-width: 1px;
     border-left-width: 1px;
-    border-right-width: 3px;
-    border-bottom-width: 3px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
     /*display: flex;*/
     /*align-items: ;*/
     /*justify-content: right;*/
 }
 
 input:focus {
-    outline-width: 3px;
+    outline-width: 5px;
     outline-color: #f6b93b;
 }
 
@@ -204,11 +206,11 @@ select {
     border-color: #4f5b62;
     border-top-width: 1px;
     border-left-width: 1px;
-    border-right-width: 3px;
-    border-bottom-width: 3px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
 }
 
 select:focus {
-    outline-width: 3px;
+    outline-width: 5px;
     outline-color: #f6b93b;
 }

@@ -61,6 +61,11 @@ const routes = [
     path: '/removeclub/:id',
     name: 'RemoveClub',
     component: () => import('../views/RemoveClub')
+  },
+  {
+    path: '/playerdetail/:id',
+    name: 'PlayerDetail',
+    component: () => import('../views/PlayerDetail')
   }
 ]
 

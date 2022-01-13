@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="info" >Select the player you want to edit:</div>
+    <div class="info">Select the player you want to edit:</div>
     <div class="h-5"></div>
     <div class="flex-row">
       <select
@@ -19,26 +19,27 @@
              @keyup.enter="search($event)"
       />
       <div class="w-1/5"></div>
-    </div>    <table class="editable">
+    </div>
+    <table class="editable">
       <thead>
-        <tr>
-          <th>Firstname</th>
-          <th>Lastname</th>
-          <th>Country</th>
-          <th>Age</th>
-        </tr>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Country</th>
+        <th>Age</th>
+      </tr>
       </thead>
       <tbody>
-        <tr
-            @click="toggleToEdit($router, player.id)"
-            v-for="player of filteredList"
-            :class="{ retired: player.retired }"
-            :key="player.id">
-          <td>{{player.firstName}}</td>
-          <td>{{player.lastName}}</td>
-          <td>{{player.country}}</td>
-          <td>{{player.age}}</td>
-        </tr>
+      <tr
+          @click="toggleToEdit($router, player.id)"
+          v-for="player of filteredList"
+          :class="{ retired: player.retired }"
+          :key="player.id">
+        <td>{{ player.firstName }}</td>
+        <td>{{ player.lastName }}</td>
+        <td>{{ player.country }}</td>
+        <td>{{ player.age }}</td>
+      </tr>
       </tbody>
     </table>
     <div class="flex-row">
@@ -48,7 +49,7 @@
          v-for="n in pages"
          :href="n-1!==page ? '?page=' + (n-1) : null"
          :key="n">
-        {{n}}
+        {{ n }}
       </a>
       <a class="page w-1/5 font-bold" :href="page<pages-1?'?page='+(page+1):null">&gt;</a>
       <a class="page w-1/5 font-bold" :href="page<pages-1?'?page='+(pages-1):null">&gt;&gt;</a>
@@ -59,6 +60,7 @@
 
 <script>
 import axios from "axios";
+
 const baseURL = "http://localhost:3001/players";
 
 export default {

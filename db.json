@@ -188,16 +188,16 @@
     {
       "id": 0,
       "playerId": "1",
-      "clubId": "2",
+      "clubId": 0,
       "years": "2014–2022",
-      "matches": 237,
+      "matches": 273,
       "goals": 223
     },
     {
       "id": 1,
       "playerId": "1",
-      "clubId": "1",
-      "years": "2010–2014",
+      "clubId": 4,
+      "years": "2010–2021",
       "matches": 131,
       "goals": 74
     },
@@ -219,10 +219,10 @@
     },
     {
       "playerId": 1,
-      "clubId": 3,
-      "years": "1",
-      "matches": "1",
-      "goals": "1",
+      "clubId": 1,
+      "years": "2",
+      "matches": 3,
+      "goals": 41,
       "id": 4
     },
     {
@@ -264,6 +264,14 @@
       "matches": 33,
       "goals": 45,
       "id": 9
+    },
+    {
+      "playerId": 1,
+      "clubId": 2,
+      "years": "2022-2030",
+      "matches": 112,
+      "goals": 130,
+      "id": 10
     }
   ]
 }

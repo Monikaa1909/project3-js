@@ -40,7 +40,7 @@
 
     <div class="flex-row">
       <button class="w-1/5" @click="toggleToAddContract($router, playerId)">Add contract</button>
-      <button class="w-1/5" >Edit</button>
+      <button class="w-1/5" @click="toggleToPlayerDetailToEdit($router, playerId)">Edit</button>
       <button class="w-1/5" >Remove contract</button>
       <div class="w-1/5"></div>
     </div>
@@ -80,6 +80,10 @@ export default {
   methods: {
     toggleToAddContract(router, id) {
       router.push({path: `/addcontract/${id}`});
+    },
+
+    toggleToPlayerDetailToEdit(router, id) {
+      router.push({path: `/playerdetailtoedit/${id}`});
     }
   },
 

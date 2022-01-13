@@ -71,6 +71,16 @@ const routes = [
     path: '/playerdetail/:id',
     name: 'PlayerDetail',
     component: () => import('../views/PlayerDetail')
+  },
+  {
+    path: '/playerdetailtoedit/:id',
+    name: 'PlayerDetailToEdit',
+    component: () => import('../views/PlayerDetailToEdit')
+  },
+  {
+    path: '/editcontract/:id',
+    name: 'EditContract',
+    component: () => import('../views/EditContract')
   }
 ]
 

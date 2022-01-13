@@ -74,7 +74,7 @@ export default {
       years: null,
       matches: null,
       goals: null,
-      selectedIndex: null,
+      selectedIndex: 0,
       club: null
     }
   },

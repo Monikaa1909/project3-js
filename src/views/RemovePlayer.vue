@@ -13,7 +13,6 @@
 <script>
 import axios from "axios";
 const baseURL = "http://localhost:3001/players";
-const baseURLcontracts = "http://localhost:3001/contracts?_expand=club&";
 
 export default {
   name: "RemovePlayer",
@@ -45,8 +44,6 @@ export default {
     async removePlayer(router) {
       try {
         await axios.delete(baseURL + "/" + this.id)
-        await axios.delete(baseURLcontracts + "playerId=" + this.id)
-        //TODO: fix 404
         await router.push('/')
       } catch (e) {
         console.log(e)

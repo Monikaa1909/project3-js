@@ -243,14 +243,6 @@
     },
     {
       "playerId": 1,
-      "clubId": 1,
-      "years": "321",
-      "matches": 321,
-      "goals": 321,
-      "id": 7
-    },
-    {
-      "playerId": 1,
       "clubId": 2,
       "years": "333",
       "matches": 333,
@@ -264,14 +256,6 @@
       "matches": 33,
       "goals": 45,
       "id": 9
-    },
-    {
-      "playerId": 1,
-      "clubId": 2,
-      "years": "2022-2030",
-      "matches": 112,
-      "goals": 130,
-      "id": 10
     }
   ]
 }

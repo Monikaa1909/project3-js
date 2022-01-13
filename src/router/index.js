@@ -78,9 +78,19 @@ const routes = [
     component: () => import('../views/PlayerDetailToEdit')
   },
   {
+    path: '/playerdetailtoremove/:id',
+    name: 'PlayerDetailToRemove',
+    component: () => import('../views/PlayerDetailToRemove')
+  },
+  {
     path: '/editcontract/:id',
     name: 'EditContract',
     component: () => import('../views/EditContract')
+  },
+  {
+    path: '/removecontract/:id',
+    name: 'RemoveContract',
+    component: () => import('../views/RemoveContract')
   }
 ]
 

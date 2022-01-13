@@ -21,10 +21,19 @@
         </select>
       </div>
       <div class="editfield flex-row">
-        <label class="editlabel">Years:</label>
+        <label class="editlabel">First year:</label>
         <input
             type="text" required
-            v-model="years"
+            v-model="startYear"
+            aria-label="Years"
+            placeholder="Years"
+        />
+      </div>
+      <div class="editfield flex-row">
+        <label class="editlabel">Last year:</label>
+        <input
+            type="text" required
+            v-model="endYear"
             aria-label="Years"
             placeholder="Years"
         />
@@ -71,7 +80,8 @@ export default {
       lastName: "",
       clubs: [],
       playerId: null,
-      years: null,
+      startYear: null,
+      endYear: null,
       matches: null,
       goals: null,
       selectedIndex: 0,
@@ -103,13 +113,16 @@ export default {
 
     async addContract(router) {
       try {
-        await Promise.all([axios.post(baseURLcontracts, {
-          playerId: this.playerId,
-          clubId: this.selectedIndex,
-          years: this.years,
-          matches: parseInt(this.matches),
-          goals: parseInt(this.goals),
-        })]);
+        if (this.endYear >= this.startYear){
+          await Promise.all([axios.post(baseURLcontracts, {
+            playerId: this.playerId,
+            clubId: this.selectedIndex,
+            startYear: parseInt(this.startYear),
+            endYear: parseInt(this.endYear),
+            matches: parseInt(this.matches),
+            goals: parseInt(this.goals),
+          })]);
+        }
 
         await router.push({path: `/playerdetail/${this.playerId}`});
       } catch (e) {

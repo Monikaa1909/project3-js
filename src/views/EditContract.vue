@@ -21,12 +21,21 @@
         </select>
       </div>
       <div class="editfield flex-row">
-        <label class="editlabel">Years:</label>
+        <label class="editlabel">First year:</label>
         <input
             type="text" required
-            v-model="years"
-            aria-label="Years"
-            placeholder="Years"
+            v-model="startYear"
+            aria-label="First year"
+            placeholder="Last year"
+        />
+      </div>
+      <div class="editfield flex-row">
+        <label class="editlabel">Last year:</label>
+        <input
+            type="text" required
+            v-model="endYear"
+            aria-label="First year"
+            placeholder="Last year"
         />
       </div>
       <div class="editfield flex-row">
@@ -71,7 +80,8 @@ export default {
       lastName: "",
       clubs: [],
       playerId: null,
-      years: null,
+      startYear: null,
+      endYear: null,
       matches: null,
       goals: null,
       selectedIndex: 0,
@@ -89,7 +99,8 @@ export default {
       this.firstName = resPlayer.data.firstName
       this.lastName = resPlayer.data.lastName
 
-      this.years = resContract.data.years
+      this.startYear = resContract.data.startYear
+      this.endYear = resContract.data.endYear
       this.matches = resContract.data.matches
       this.goals = resContract.data.goals
       this.clubs = resClub.data
@@ -107,12 +118,15 @@ export default {
 
     async editContract(router) {
       try {
-        await Promise.all([axios.patch(baseURLcontracts + "/" + this.$route.params.id, {
-          clubId: this.selectedIndex,
-          years: this.years,
-          matches: parseInt(this.matches),
-          goals: parseInt(this.goals),
-        })]);
+        if (this.endYear >= this.startYear) {
+          await Promise.all([axios.patch(baseURLcontracts + "/" + this.$route.params.id, {
+            clubId: this.selectedIndex,
+            startYear: parseInt(this.startYear),
+            endYear: parseInt(this.endYear),
+            matches: parseInt(this.matches),
+            goals: parseInt(this.goals),
+          })]);
+        }
 
         await router.push({path: `/playerdetail/${this.playerId}`});
       } catch (e) {

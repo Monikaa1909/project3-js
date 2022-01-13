@@ -17,7 +17,7 @@
           v-for="contract of contracts"
           :key="contract.id">
         <td>{{contract.club.name}}</td>
-        <td>{{contract.years}}</td>
+        <td>{{contract.startYear}}-{{contract.endYear}}</td>
         <td>{{contract.matches}}</td>
         <td>{{contract.goals}}</td>
       </tr>

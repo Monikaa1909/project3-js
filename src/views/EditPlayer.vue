@@ -14,7 +14,7 @@
         />
       </div>
       <div class="editfield flex-row">
-        <label class="editlabel">Lastame:</label>
+        <label class="editlabel">Lastname:</label>
         <input
             type="text" required
             v-model="lastName"

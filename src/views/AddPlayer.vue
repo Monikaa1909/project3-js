@@ -24,12 +24,13 @@
 
       <div class="editfield flex-row">
         <label class="editlabel">Country:</label>
-        <input
-            type="text" required
+        <select
+            class="appearance-none"
             v-model="country"
             aria-label="Country"
-            placeholder="Country"
-        />
+            placeholder="Country">
+          <option v-for="country in countries" v-bind:key=country.name :value="country.name">{{country.name}}</option>
+        </select>
       </div>
 
       <div class="editfield flex-row">
@@ -68,12 +69,14 @@
 
 import axios from "axios";
 const baseURL = "http://localhost:3001/players";
+const baseURLcountries = "http://localhost:3001/countries";
 
 export default {
   name: "AddPlayer",
   data() {
     return {
       players: [],
+      countries: [],
       firstName: "",
       lastName: "",
       country: null,
@@ -86,6 +89,8 @@ export default {
   async created() {
     try {
       const res = await axios.get(baseURL);
+      const resCountries = await axios.get(baseURLcountries)
+      this.countries = resCountries.data;
       this.players = res.data;
     } catch (e) {
       console.error(e);

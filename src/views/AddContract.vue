@@ -107,8 +107,8 @@ export default {
           playerId: this.playerId,
           clubId: this.selectedIndex,
           years: this.years,
-          matches: this.matches,
-          goals: this.goals,
+          matches: parseInt(this.matches),
+          goals: parseInt(this.goals),
         })]);
 
         await router.push({path: `/playerdetail/${this.playerId}`});

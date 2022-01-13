@@ -112,6 +112,7 @@ export default {
           default:
             break;
         }
+
         const res = await axios.get(url);
         this.players = res.data;
         this.pages = Math.ceil(this.players.length / 6);

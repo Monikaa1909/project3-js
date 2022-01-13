@@ -104,7 +104,7 @@ export default {
             firstName: this.firstName,
             lastName: this.lastName,
             country: this.country,
-            age: this.age,
+            age: parseInt(this.age),
             retired: this.retired === "No" ? this.retired = false : this.retired = true
           })]);
 

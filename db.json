@@ -4,23 +4,23 @@
       "firstName": "Robert",
       "lastName": "Lewandowski",
       "country": "Poland",
-      "age": "31",
-      "retired": false,
+      "age": 31,
+      "retired": true,
       "id": 1
     },
     {
       "firstName": "Zinedine",
       "lastName": "Zidanee",
       "country": "USA",
-      "age": "46",
-      "retired": false,
+      "age": 46,
+      "retired": true,
       "id": 2
     },
     {
       "firstName": "Paulo",
       "lastName": "Sousa",
       "country": "Poland",
-      "age": "60",
+      "age": 60,
       "retired": false,
       "id": 3
     },
@@ -28,7 +28,7 @@
       "firstName": "AAA",
       "lastName": "aaa",
       "country": "Poland",
-      "age": "31",
+      "age": 31,
       "retired": false,
       "id": 4
     },
@@ -44,7 +44,7 @@
       "firstName": "ccc",
       "lastName": "Sousa",
       "country": "Poland",
-      "age": "60",
+      "age": 60,
       "retired": false,
       "id": 6
     },
@@ -119,6 +119,22 @@
       "age": "60",
       "retired": false,
       "id": 15
+    },
+    {
+      "firstName": "ZT",
+      "lastName": "P",
+      "country": "POLAND",
+      "age": 32,
+      "retired": true,
+      "id": 16
+    },
+    {
+      "firstName": "Zlatan",
+      "lastName": "Imbra",
+      "country": "Szwecja",
+      "age": 39,
+      "retired": false,
+      "id": 17
     }
   ],
   "clubs": [
@@ -156,6 +172,15 @@
       "currentCoach": "xsx",
       "founded": "1000",
       "ground": "dewc",
+      "championsLeagueWinner": true
+    },
+    {
+      "id": 4,
+      "name": "Manchester United",
+      "league": "Premier League",
+      "currentCoach": "Ralf Rangnick",
+      "founded": "1878",
+      "ground": "Old Trafford",
       "championsLeagueWinner": true
     }
   ],
@@ -207,6 +232,38 @@
       "matches": "2",
       "goals": "2",
       "id": 5
+    },
+    {
+      "playerId": 1,
+      "clubId": 2,
+      "years": "32",
+      "matches": 321,
+      "goals": 321,
+      "id": 6
+    },
+    {
+      "playerId": 1,
+      "clubId": 1,
+      "years": "321",
+      "matches": 321,
+      "goals": 321,
+      "id": 7
+    },
+    {
+      "playerId": 1,
+      "clubId": 2,
+      "years": "333",
+      "matches": 333,
+      "goals": 321,
+      "id": 8
+    },
+    {
+      "playerId": 2,
+      "clubId": 2,
+      "years": "2011-2038",
+      "matches": 33,
+      "goals": 45,
+      "id": 9
     }
   ]
 }

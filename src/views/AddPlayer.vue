@@ -2,36 +2,56 @@
   <div>
     <div class="h-5"></div>
     <form @submit.prevent="addPlayer($router)">
-      <input
-          type="text" required
-          v-model="firstName"
-          aria-label="First name"
-          placeholder="First name"
-      />
-      <input
-          type="text" required
-          v-model="lastName"
-          aria-label="Second name"
-          placeholder="Second name"
-      />
-      <input
-          type="text" required
-          v-model="country"
-          aria-label="Country"
-          placeholder="Country"
-      />
-      <input
-          type="text" required
-          v-model="age"
-          aria-label="Age"
-          placeholder="Age"
-      />
-      <input
-          type="text" required
-          v-model="retired"
-          aria-label="Retired"
-          placeholder="Retired"
-      />
+      <div class="editfield flex-row">
+        <label class="editlabel">Firstname:</label>
+        <input
+            type="text" required
+            v-model="firstName"
+            aria-label="First name"
+            placeholder="First name"
+        />
+      </div>
+
+      <div class="editfield flex-row">
+        <label class="editlabel">Lastname:</label>
+        <input
+            type="text" required
+            v-model="lastName"
+            aria-label="Second name"
+            placeholder="Second name"
+        />
+      </div>
+
+      <div class="editfield flex-row">
+        <label class="editlabel">Country:</label>
+        <input
+            type="text" required
+            v-model="country"
+            aria-label="Country"
+            placeholder="Country"
+        />
+      </div>
+
+      <div class="editfield flex-row">
+        <label class="editlabel">Age:</label>
+        <input
+            type="text" required
+            v-model="age"
+            aria-label="Age"
+            placeholder="Age"
+        />
+      </div>
+
+      <div class="editfield flex-row">
+        <label class="editlabel">Retired:</label>
+        <select
+            class="appearance-none"
+            v-model="retired"
+            aria-label="Retired"
+            placeholder="Retired">
+          <option v-for="bool in bools" v-bind:key=bool :value="bool">{{bool}}</option>
+        </select>
+      </div>
 
       <div class="flex-row">
         <div class="w-1/5"></div>
@@ -58,7 +78,8 @@ export default {
       lastName: "",
       country: null,
       age: null,
-      retired: null
+      retired: null,
+      bools: ['No', 'Yes']
     };
   },
 
@@ -79,8 +100,8 @@ export default {
             firstName: this.firstName,
             lastName: this.lastName,
             country: this.country,
-            age: this.age,
-            retired: this.retired === null ? this.retired = false : this.retired === "true"
+            age: parseInt(this.age),
+            retired: this.retired === "No" ? this.retired = false : this.retired = true
           })]);
 
           this.players = [...this.players, res.data];

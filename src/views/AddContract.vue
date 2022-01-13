@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="info" v-if="somethingWrong">Fill in the fields correctly </div>
     <div class="h-5"></div>
     <form @submit.prevent="addContract($router)">
       <div class="editfield flex-row">
@@ -85,7 +86,8 @@ export default {
       matches: null,
       goals: null,
       selectedIndex: 0,
-      club: null
+      club: null,
+      somethingWrong: false
     }
   },
 
@@ -113,7 +115,7 @@ export default {
 
     async addContract(router) {
       try {
-        if (this.endYear >= this.startYear){
+        if (this.endYear >= this.startYear && !isNaN(this.matches) && !isNaN(this.goals) && !isNaN(this.startYear) && !isNaN(this.endYear)) {
           await Promise.all([axios.post(baseURLcontracts, {
             playerId: this.playerId,
             clubId: this.selectedIndex,
@@ -122,9 +124,9 @@ export default {
             matches: parseInt(this.matches),
             goals: parseInt(this.goals),
           })]);
-        }
+          await router.push({path: `/playerdetail/${this.playerId}`});
+        } else this.somethingWrong = true
 
-        await router.push({path: `/playerdetail/${this.playerId}`});
       } catch (e) {
         console.error(e);
       }

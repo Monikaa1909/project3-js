@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="info" v-if="somethingWrong">Fill in the fields correctly </div>
     <div class="info"></div>
     <div class="h-5"></div>
 
@@ -76,7 +77,8 @@ export default {
       country: null,
       age: null,
       retired: null,
-      bools: ['No', 'Yes']
+      bools: ['No', 'Yes'],
+      somethingWrong: false
     };
   },
 
@@ -118,7 +120,7 @@ export default {
         }
 
         router.push('/')
-      }
+      } else this.somethingWrong = true
     }
   }
 }

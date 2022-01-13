@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="info" v-if="somethingWrong">Fill in the fields correctly</div>
     <form @submit.prevent="addClub($router)">
       <div class="editfield flex-row">
         <label class="editlabel">Name:</label>
@@ -84,7 +85,8 @@ export default {
       founded: null,
       championsLeagueWinner: null,
       ground: null,
-      bools:  ['No', 'Yes']
+      bools:  ['No', 'Yes'],
+      somethingWrong: false
     };
   },
 
@@ -99,7 +101,9 @@ export default {
 
   methods: {
     async addClub(router) {
-      if (this.name.length > 0) {
+      var regExp = /[a-zA-Z]/g;
+
+      if (this.name.length > 0 && !regExp.test(this.founded)) {
         try {
           await Promise.all([axios.post(baseURL, {
             id: this.id,
@@ -115,7 +119,7 @@ export default {
         } catch (e) {
           console.error(e);
         }
-      }
+      } else this.somethingWrong = true
     }
   }
 }

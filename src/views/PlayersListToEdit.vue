@@ -32,7 +32,7 @@
       <tbody>
       <tr
           @click="toggleToEdit($router, player.id)"
-          v-for="player of filteredList"
+          v-for="player of players"
           :class="{ retired: player.retired }"
           :key="player.id">
         <td>{{ player.firstName }}</td>
@@ -42,17 +42,34 @@
       </tr>
       </tbody>
     </table>
-    <div class="flex-row">
-      <a class="page w-1/5 font-bold" :href="page>0?'?page=0':null">&lt;&lt;</a>
-      <a class="page w-1/5 font-bold" :href="page>0?'?page='+(page-1):null">&lt;</a>
-      <a class="page"
-         v-for="n in pages"
-         :href="n-1!==page ? '?page=' + (n-1) : null"
-         :key="n">
-        {{ n }}
-      </a>
-      <a class="page w-1/5 font-bold" :href="page<pages-1?'?page='+(page+1):null">&gt;</a>
-      <a class="page w-1/5 font-bold" :href="page<pages-1?'?page='+(pages-1):null">&gt;&gt;</a>
+    <div class="direction flex-row">
+      <button v-if="page>0" class="page font-bold" @click="changePage(1)">&lt;&lt;</button>
+      <button v-if="page===0" class="disPage font-bold">&lt;&lt;</button>
+
+      <button v-if="page>0" class="page font-bold animate-bounce" @click="changePage(page)">&lt;</button>
+      <button v-if="page===0" class="disPage font-bold">&lt;</button>
+
+      <span
+          v-for="n in pages"
+          :key="n">
+        <button
+            v-if="page+1 !== n"
+            class="page"
+            @click="changePage(n)">
+          {{n}}
+        </button>
+        <button
+            v-if="page+1 === n"
+            class="disPage">
+          {{n}}
+        </button>
+      </span>
+
+      <button v-if="page<pages-1" class="page font-bold animate-bounce" @click="changePage(page+2)">&gt;</button>
+      <button v-if="page===pages-1" class="disPage font-bold" >&gt;</button>
+
+      <button v-if="page<pages-1" class="page font-bold" @click="changePage(pages)">&gt;&gt;</button>
+      <button v-if="page===pages-1" class="disPage font-bold" >&gt;&gt;</button>
       <div class="w-1/5"></div>
     </div>
   </div>
@@ -68,22 +85,22 @@ export default {
   data() {
     return {
       players: [],
-      firstName: "",
-      lastName: "",
-      age: null,
-      retired: null,
       page: 0,
-      pages: 0
+      pages: 0,
+      sorting: 'firstName',
+      query: ''
     };
   },
 
   async created() {
     try {
-      const res = await axios.get(baseURL);
+      const res = await axios.get(baseURL + "?_sort=" + this.sorting + "&order=asc");
       this.players = res.data;
       this.pages = Math.ceil(this.players.length / 6);
       const query = new URLSearchParams(location.search);
       this.page = +query.get("page");
+      const res2 = await axios.get(baseURL + "?_sort=" + this.sorting + "&order=asc&_start=0&_limit=6");
+      this.players = res2.data;
     } catch (e) {
       console.error(e);
     }
@@ -93,47 +110,54 @@ export default {
     toggleToEdit(router, id) {
       router.push({path: `/editplayer/${id}`});
     },
-    async sort(event) {
-      let url = baseURL;
-      try {
-        switch (event.target.value) {
-          case "Sort by lastname":
-            url = baseURL + "?_sort=lastName&order=asc";
-            break;
-          case "Sort by firstname":
-            url = baseURL + "?_sort=firstName&order=asc";
-            break;
-          case "Sort by country":
-            url = baseURL + "?_sort=country&order=asc";
-            break;
-          case "Sort by age":
-            url = baseURL + "?_sort=age&order=asc";
-            break;
-          case "No sorting":
-            break;
-          default:
-            break;
-        }
 
-        const res = await axios.get(url);
+    sort(event) {
+      switch (event.target.value) {
+        case "Sort by lastname":
+          this.sorting = 'lastName';
+          break;
+        case "Sort by firstname":
+          this.sorting = 'firstName';
+          break;
+        case "Sort by country":
+          this.sorting = 'country';
+          break;
+        case "Sort by age":
+          this.sorting = 'age';
+          break;
+        default:
+          this.sorting = 'firstName';
+          break;
+      }
+
+      this.changePage(this.page + 1);
+    },
+
+    async changePage(n) {
+      this.page = n - 1;
+      console.log("CHAMGEPAGE page = " + this.page);
+      try {
+        console.log("n=" + n + ", page = " + this.page)
+        const res = await axios.get(baseURL + "?_sort=" + this.sorting + "&order=asc&_start=" + (n-1) * 6 + "&_limit=6&q=" + this.query);
         this.players = res.data;
-        this.pages = Math.ceil(this.players.length / 6);
-        const query = new URLSearchParams(location.search);
-        this.page = +query.get("page");
+        // const query = new URLSearchParams(location.search);
+        // this.page = +query.get("page");
+        console.log("CHANGEPAGE QUERY page = " + this.page);
       } catch (e) {
         console.error(e);
       }
     },
 
     async search(event) {
-      // let url = baseURL;
       try {
-        console.log(event.target.value);
-        const res = await axios.get(baseURL + "?q=" + event.target.value);
+        this.query = event.target.value;
+        const res = await axios.get(baseURL + "?q=" + this.query);
         this.players = res.data;
         this.pages = Math.ceil(this.players.length / 6);
         const query = new URLSearchParams(location.search);
         this.page = +query.get("page");
+        console.log("SEATCH page = " + this.page);
+        await this.changePage(this.page + 1);
       } catch (e) {
         console.error(e);
       }

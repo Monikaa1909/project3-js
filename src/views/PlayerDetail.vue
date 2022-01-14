@@ -2,6 +2,19 @@
   <div>
     <div class="info"></div>
     <div class="h-5"></div>
+
+    <div class="flex-row">
+      <select
+          class="filter"
+          @change="sort($event)">
+        <option>Sort by club</option>
+        <option>Sort by years</option>
+        <option>Sort by matches</option>
+        <option>Sort by goals</option>
+      </select>
+      <div class="w-1/5"></div>
+    </div>
+
     <table id="table">
       <thead>
       <tr>
@@ -24,17 +37,34 @@
       </tbody>
     </table>
 
-    <div class="flex-row">
-      <a class="page w-1/5 font-bold" :href="page>0?'?page=0':null">&lt;&lt;</a>
-      <a class="page w-1/5 font-bold" :href="page>0?'?page='+(page-1):null">&lt;</a>
-      <a class="page"
-         v-for="n in pages"
-         :href="n-1!==page ? '?page=' + (n-1) : null"
-         :key="n">
-        {{n}}
-      </a>
-      <a class="page w-1/5 font-bold" :href="page<pages-1?'?page='+(page+1):null">&gt;</a>
-      <a class="page w-1/5 font-bold" :href="page<pages-1?'?page='+(pages-1):null">&gt;&gt;</a>
+    <div class="direction flex-row">
+      <button v-if="page>0" class="page font-bold" @click="changePage(1)">&lt;&lt;</button>
+      <button v-if="page===0" class="disPage font-bold">&lt;&lt;</button>
+
+      <button v-if="page>0" class="page font-bold animate-bounce" @click="changePage(page)">&lt;</button>
+      <button v-if="page===0" class="disPage font-bold">&lt;</button>
+
+      <span
+          v-for="n in pages"
+          :key="n">
+        <button
+            v-if="page+1 !== n"
+            class="page"
+            @click="changePage(n)">
+          {{n}}
+        </button>
+        <button
+            v-if="page+1 === n"
+            class="disPage">
+          {{n}}
+        </button>
+      </span>
+
+      <button v-if="page<pages-1" class="page font-bold animate-bounce" @click="changePage(page+2)">&gt;</button>
+      <button v-if="page===pages-1" class="disPage font-bold" >&gt;</button>
+
+      <button v-if="page<pages-1" class="page font-bold" @click="changePage(pages)">&gt;&gt;</button>
+      <button v-if="page===pages-1" class="disPage font-bold" >&gt;&gt;</button>
       <div class="w-1/5"></div>
     </div>
 
@@ -60,18 +90,21 @@ export default {
       contracts: [],
       page: 0,
       pages: 0,
-      playerId: null
+      playerId: null,
+      sorting: 'years'
     };
   },
 
   async created() {
     try {
-      this.playerId = this.$route.params.id
-      const res = await axios.get(baseURL + "playerId=" + this.playerId)
+      this.playerId = this.$route.params.id;
+      const res = await axios.get(baseURL + "playerId=" + this.playerId + "&_sort=" + this.sorting + "&order=asc");
       this.contracts = res.data;
       this.pages = Math.ceil(this.contracts.length / 6);
       const query = new URLSearchParams(location.search);
       this.page = +query.get("page");
+      const res2 = await axios.get(baseURL + "playerId=" + this.playerId + "&_sort=" + this.sorting + "&order=asc&_start=0&_limit=6");
+      this.contracts = res2.data;
     } catch (e) {
       console.error(e);
     }
@@ -88,17 +121,40 @@ export default {
 
     toggleToPlayerDetailToRemove(router, id) {
       router.push({path: `/playerdetailtoremove/${id}`});
-    }
-  },
+    },
 
-  computed: {
-    filteredList() {
-      return this.contracts.slice(this.page * 6, this.page * 6 + 6);
-    }
+    sort(event) {
+      switch (event.target.value) {
+        case "Sort by club":
+          this.sorting = 'club';
+          break;
+        case "Sort by years":
+          this.sorting = 'years';
+          break;
+        case "Sort by matches":
+          this.sorting = 'matches';
+          break;
+        case "Sort by goals":
+          this.sorting = 'goals';
+          break;
+        default:
+          this.sorting = 'club';
+          break;
+      }
+
+      this.changePage(this.page + 1);
+    },
+
+    async changePage(n) {
+      this.page = n - 1;
+      try {
+        const res = await axios.get(baseURL + "playerId=" + this.playerId + "&_sort=" + this.sorting + "&order=asc&_start=" + (n-1) * 6 + "&_limit=6" + this.query);
+        console.log(baseURL + "playerId=" + this.playerId + "&_sort=" + this.sorting + "&order=asc&_start=" + (n-1) * 6 + "&_limit=6" + this.query)
+        this.contracts = res.data;
+      } catch (e) {
+        console.error(e);
+      }
+    },
   }
 }
 </script>
-
-<style scoped>
-
-</style>

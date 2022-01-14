@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-// import TopPlayers from '../views/TopPlayers.vue'
 
 const routes = [
   {

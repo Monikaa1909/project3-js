@@ -77,7 +77,8 @@ export default {
       players: [],
       page: 0,
       pages: 0,
-      sorting: 'firstName'
+      sorting: 'firstName',
+      query: ''
     };
   },
 
@@ -123,11 +124,10 @@ export default {
     },
 
     async changePage(n) {
-      let url = baseURL;
       this.page = n - 1;
       try {
         console.log("n=" + n + ", this.page * 6")
-        const res = await axios.get(url + "?_sort=" + this.sorting + "&order=asc&_start=" + this.page * 6 + "&_limit=6");
+        const res = await axios.get(baseURL + "?_sort=" + this.sorting + "&order=asc&_start=" + this.page * 6 + "&_limit=6&q=" + this.query);
         this.players = res.data;
         const query = new URLSearchParams(location.search);
         this.page = +query.get("page");
@@ -138,12 +138,13 @@ export default {
 
     async search(event) {
       try {
-        console.log(event.target.value);
-        const res = await axios.get(baseURL + "?q=" + event.target.value);
+        this.query = event.target.value;
+        const res = await axios.get(baseURL + "?q=" + this.query);
         this.players = res.data;
         this.pages = Math.ceil(this.players.length / 6);
         const query = new URLSearchParams(location.search);
         this.page = +query.get("page");
+        await this.changePage(this.page + 1);
       } catch (e) {
         console.error(e);
       }

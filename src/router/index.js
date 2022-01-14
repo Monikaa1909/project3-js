@@ -18,6 +18,11 @@ const routes = [
     component: () => import('../views/PlayersListToRemove.vue')
   },
   {
+    path: '/playersByClub/:id',
+    name: 'PlayersByClub',
+    component: () => import('../views/PlayersList.vue')
+  },
+  {
     path: '/clubs',
     name: 'ClubList',
     component: () => import('../views/ClubsList.vue')

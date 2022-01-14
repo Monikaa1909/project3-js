@@ -26,14 +26,14 @@
     },
     {
       "firstName": "AAA",
-      "lastName": "aaa",
+      "lastName": "Aaa",
       "country": "Poland",
       "age": 31,
       "retired": false,
       "id": 4
     },
     {
-      "firstName": "bbb",
+      "firstName": "Bbb",
       "lastName": "Zidanee",
       "country": "USA",
       "age": "46",
@@ -41,7 +41,7 @@
       "id": 5
     },
     {
-      "firstName": "ccc",
+      "firstName": "Ccc",
       "lastName": "Sousa",
       "country": "Poland",
       "age": 60,
@@ -49,7 +49,7 @@
       "id": 6
     },
     {
-      "firstName": "ddd",
+      "firstName": "Ddd",
       "lastName": "Lewandowski",
       "country": "Poland",
       "age": "31",
@@ -57,7 +57,7 @@
       "id": 7
     },
     {
-      "firstName": "eee",
+      "firstName": "Eee",
       "lastName": "Zidanee",
       "country": "USA",
       "age": "46",
@@ -65,7 +65,7 @@
       "id": 8
     },
     {
-      "firstName": "fff",
+      "firstName": "Ffff",
       "lastName": "Sousa",
       "country": "Poland",
       "age": "60",
@@ -73,7 +73,7 @@
       "id": 9
     },
     {
-      "firstName": "ddd",
+      "firstName": "Ddd",
       "lastName": "Lewandowski",
       "country": "Poland",
       "age": "31",
@@ -137,8 +137,8 @@
       "id": 17
     },
     {
-      "firstName": "dd",
-      "lastName": "dd",
+      "firstName": "Dd",
+      "lastName": "Dd",
       "country": "Cocos (Keeling) Islands",
       "age": 33,
       "retired": true,
@@ -172,15 +172,6 @@
       "founded": "1900-02-27 ",
       "championsLeagueWinner": true,
       "ground": "Allianz Arena"
-    },
-    {
-      "id": 3,
-      "name": "Z",
-      "league": "a",
-      "currentCoach": "xsx",
-      "founded": "1000",
-      "ground": "dewc",
-      "championsLeagueWinner": true
     },
     {
       "id": 4,

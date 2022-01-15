@@ -5,8 +5,8 @@
     <div class="msg">
       Are you sure you want to delete this player?
     </div>
-    <button class="btn btn-no" @click="removePlayer($router, $event)">Tak</button>
-    <button class="btn btn-no" @click="$router.push('/')">Nie</button>
+    <button class="btn btn-no" @click="removePlayer($router, $event)">Yes</button>
+    <button class="btn btn-no" @click="$router.push('/')">No</button>
   </div>
 </template>
 

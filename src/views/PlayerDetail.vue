@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="info"></div>
+    <div class="info" v-if="noContracts">There are no contracts</div>
     <div class="h-5"></div>
 
     <div class="flex-row">
@@ -91,7 +91,8 @@ export default {
       page: 0,
       pages: 0,
       playerId: null,
-      sorting: 'years'
+      sorting: 'years',
+      noContracts: false
     };
   },
 
@@ -116,11 +117,11 @@ export default {
     },
 
     toggleToPlayerDetailToEdit(router, id) {
-      router.push({path: `/playerdetailtoedit/${id}`});
+      this.contracts.length === 0 ? this.noContracts = true : router.push({path: `/playerdetailtoedit/${id}`})
     },
 
     toggleToPlayerDetailToRemove(router, id) {
-      router.push({path: `/playerdetailtoremove/${id}`});
+      this.contracts.length === 0 ? this.noContracts = true : router.push({path: `/playerdetailtoremove/${id}`});
     },
 
     sort(event) {

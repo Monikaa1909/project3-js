@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="info"></div>
+    <div class="info">Select the club you want to edit:</div>
     <div class="h-5"></div>
 
     <div class="flex-row">

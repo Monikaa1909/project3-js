@@ -5,8 +5,8 @@
     <div class="msg">
       Are you sure you want to delete this contract?
     </div>
-    <button class="btn btn-no" @click="removeContract($router, $event)">Tak</button>
-    <button class="btn btn-no" @click="$router.push('/clubs')">Nie</button>
+    <button class="btn btn-no" @click="removeContract($router, $event)">Yes</button>
+    <button class="btn btn-no" @click="$router.push('/clubs')">No</button>
   </div>
 </template>
 

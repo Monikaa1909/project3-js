@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="info"></div>
+    <div class="info" v-if="noPlayers">There are no players</div>
     <div class="h-5"></div>
     <div class="flex-row">
       <select
@@ -75,8 +75,8 @@
 
     <div class="flex-row">
       <button class="w-1/5 " @click="$router.push('addplayer')">Add</button>
-      <button class="w-1/5" @click="$router.push('playerstoedit')">Edit</button>
-      <button class="w-1/5" @click="$router.push('playerstoremove')">Remove</button>
+      <button class="w-1/5" @click="toggleToEdit($router)">Edit</button>
+      <button class="w-1/5" @click="toggleToRemove($router)">Remove</button>
       <div class="w-1/5"></div>
     </div>
     <div class="h-10"></div>
@@ -95,7 +95,8 @@ export default {
       page: 0,
       pages: 0,
       sorting: 'firstName',
-      query: ''
+      query: '',
+      noPlayers: false
     };
   },
 
@@ -116,6 +117,15 @@ export default {
   methods: {
     toggleToDetail(router, id) {
       router.push({path: `/playerdetail/${id}`});
+    },
+
+    toggleToEdit(router) {
+      this.players.length === 0 ? this.noPlayers = true : router.push('playerstoedit')
+    },
+
+
+    toggleToRemove(router) {
+      this.players.length === 0 ? this.noPlayers = true : router.push('playerstoremove')
     },
 
     sort(event) {

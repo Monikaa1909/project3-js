@@ -1,6 +1,6 @@
 <template>
     <div>
-      <div class="info"></div>
+      <div class="info" v-if="noClubs">There are no clubs</div>
       <div class="h-5"></div>
 
       <div class="flex-row">
@@ -105,8 +105,8 @@
       <div class="flex-row">
         <div class="w-1/5"></div>
         <button class="w-1/5" @click="$router.push('addclub')">Add</button>
-        <button class="w-1/5" @click="$router.push('clubstoedit')">Edit</button>
-        <button class="w-1/5" @click="$router.push('clubstoremove')">Remove</button>
+        <button class="w-1/5" @click="toggleToEdit($router)">Edit</button>
+        <button class="w-1/5" @click="toggleToRemove($router)">Remove</button>
         <div class="w-1/5"></div>
       </div>
       <div class="h-10"></div>
@@ -129,7 +129,8 @@ export default {
       moreOption: false,
       winner: '',
       league: '',
-      leagues: []
+      leagues: [],
+      noClubs: false
     };
   },
 
@@ -154,6 +155,15 @@ export default {
   },
 
   methods: {
+
+    toggleToEdit(router) {
+      this.clubs.length === 0 ? this.noClubs = true : router.push('clubstoedit')
+    },
+
+    toggleToRemove(router) {
+      this.clubs.length === 0 ? this.noClubs = true : router.push('clubstoremove')
+    },
+
     sort(event) {
       switch (event.target.value) {
         case "Sort by name":

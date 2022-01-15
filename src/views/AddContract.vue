@@ -102,6 +102,7 @@ export default {
 
       this.clubs = resClub.data
 
+      this.selectedIndex = this.clubs[0].id
     } catch (e) {
       console.error(e);
     }

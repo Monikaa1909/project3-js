@@ -106,6 +106,8 @@ export default {
       this.matches = resContract.data.matches
       this.goals = resContract.data.goals
       this.clubs = resClub.data
+      this.selectedIndex = this.clubs[0].id
+      console.log("selected index is" + this.selectedIndex)
 
     } catch (e) {
       console.error(e);

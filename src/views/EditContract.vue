@@ -85,7 +85,7 @@ export default {
       endYear: null,
       matches: null,
       goals: null,
-      selectedIndex: 0,
+      clubId: 0,
       club: null,
       somethingWrong: false
     }
@@ -106,8 +106,8 @@ export default {
       this.matches = resContract.data.matches
       this.goals = resContract.data.goals
       this.clubs = resClub.data
-      this.selectedIndex = this.clubs[0].id
-      console.log("selected index is" + this.selectedIndex)
+      this.clubId = this.clubs[0].id
+      console.log("selected index is" + this.clubId)
 
     } catch (e) {
       console.error(e);
@@ -115,16 +115,16 @@ export default {
   },
 
   methods: {
-    getClubId(event, selectedIndex) {
+    async getClubId(event, selectedIndex) {
       console.log(event, selectedIndex);
-      this.selectedIndex = selectedIndex;
+      this.clubId = this.clubs[selectedIndex].id;
     },
 
     async editContract(router) {
       try {
         if (this.endYear >= this.startYear && !isNaN(this.matches) && !isNaN(this.goals) && !isNaN(this.startYear) && !isNaN(this.endYear)) {
           await Promise.all([axios.patch(baseURLcontracts + "/" + this.$route.params.id, {
-            clubId: this.selectedIndex,
+            clubId: this.clubId,
             startYear: parseInt(this.startYear),
             endYear: parseInt(this.endYear),
             matches: parseInt(this.matches),

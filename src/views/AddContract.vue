@@ -85,7 +85,7 @@ export default {
       endYear: null,
       matches: null,
       goals: null,
-      selectedIndex: 0,
+      clubId: 0,
       club: null,
       somethingWrong: false
     }
@@ -101,17 +101,20 @@ export default {
       this.lastName = resPlayer.data.lastName
 
       this.clubs = resClub.data
+      this.clubId = this.clubs[0].id
+      console.log("club id na starcie to" + this.clubId)
 
-      this.selectedIndex = this.clubs[0].id
     } catch (e) {
       console.error(e);
     }
   },
 
   methods: {
-    getClubId(event, selectedIndex) {
+    async getClubId(event, selectedIndex) {
       console.log(event, selectedIndex);
-      this.selectedIndex = selectedIndex;
+
+      this.clubId = this.clubs[selectedIndex].id;
+      console.log("club id po zmianach to " + this.clubId)
     },
 
     async addContract(router) {
@@ -119,7 +122,7 @@ export default {
         if (this.endYear >= this.startYear && !isNaN(this.matches) && !isNaN(this.goals) && !isNaN(this.startYear) && !isNaN(this.endYear)) {
           await Promise.all([axios.post(baseURLcontracts, {
             playerId: this.playerId,
-            clubId: this.selectedIndex,
+            clubId: this.clubId,
             startYear: parseInt(this.startYear),
             endYear: parseInt(this.endYear),
             matches: parseInt(this.matches),

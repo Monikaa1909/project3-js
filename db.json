@@ -39,6 +39,22 @@
       "age": 45,
       "retired": true,
       "id": 5
+    },
+    {
+      "firstName": "Gianluigi",
+      "lastName": "Buffon",
+      "country": "Italy",
+      "age": 43,
+      "retired": false,
+      "id": 6
+    },
+    {
+      "firstName": "Neymar",
+      "lastName": "Jr",
+      "country": "Brasil",
+      "age": 29,
+      "retired": false,
+      "id": 7
     }
   ],
   "clubs": [
@@ -122,6 +138,15 @@
       "founded": "1908",
       "ground": "Stadio Giuseppe Meazza",
       "championsLeagueWinner": true
+    },
+    {
+      "id": 3,
+      "name": "Arsenal F.C.",
+      "league": "Premier League",
+      "currentCoach": "Mikel Arteta",
+      "founded": "1886",
+      "ground": "Emirates Stadium",
+      "championsLeagueWinner": false
     }
   ],
   "contracts": [
@@ -228,19 +253,73 @@
       "id": 11,
       "playerId": 5,
       "clubId": 0,
+      "startYear": 2002,
+      "endYear": 2007,
+      "matches": 127,
+      "goals": 83
+    },
+    {
+      "id": 12,
+      "playerId": 5,
+      "clubId": 9,
       "startYear": 1997,
       "endYear": 2002,
       "matches": 68,
       "goals": 49
     },
     {
-      "id": 12,
+      "id": 13,
       "playerId": 5,
       "clubId": 9,
-      "startYear": 2002,
-      "endYear": 2007,
-      "matches": 127,
-      "goals": 83
+      "startYear": 1996,
+      "endYear": 1997,
+      "matches": 37,
+      "goals": 34
+    },
+    {
+      "id": 14,
+      "playerId": 6,
+      "clubId": 5,
+      "startYear": 2019,
+      "endYear": 2021,
+      "matches": 17,
+      "goals": 0
+    },
+    {
+      "id": 15,
+      "playerId": 6,
+      "clubId": 6,
+      "startYear": 2018,
+      "endYear": 2019,
+      "matches": 17,
+      "goals": 0
+    },
+    {
+      "id": 16,
+      "playerId": 6,
+      "clubId": 5,
+      "startYear": 2001,
+      "endYear": 2018,
+      "matches": 509,
+      "goals": 0
+    },
+    {
+      "id": 17,
+      "playerId": 7,
+      "clubId": 6,
+      "startYear": 2017,
+      "endYear": 2022,
+      "matches": 80,
+      "goals": 59
+    },
+    {
+      "id": 18,
+      "playerId": 7,
+      "clubId": 7,
+      "startYear": 2013,
+      "endYear": 2017,
+      "matches": 123,
+      "goals": 68
     }
   ],
 

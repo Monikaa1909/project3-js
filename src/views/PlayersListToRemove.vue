@@ -3,6 +3,8 @@
     <div class="info" >Select the player you want to remove:</div>
     <div class="h-16"></div>
     <div class="flex-row">
+      <button v-if="moreOption===false" class="filter" @click="moreOption=true">✚</button>
+      <button v-else-if="moreOption===true" class="filter" @click="moreOption=false">━</button>
       <select
           class="filter"
           @change="sort($event)">
@@ -20,6 +22,19 @@
       />
       <div class="w-1/5"></div>
     </div>
+
+    <div class="flex-row"
+         v-if="moreOption===true">
+      <select
+          class="filter"
+          @change="changeCareer($event)"
+      >
+        <option>All players</option>
+        <option>Still playing</option>
+        <option>Retirees</option>
+      </select>
+    </div>
+
     <table class="editable">
       <thead>
       <tr>
@@ -89,7 +104,9 @@ export default {
       page: 0,
       pages: 0,
       sorting: 'firstName',
-      query: ''
+      query: '',
+      moreOption: false,
+      retirement: ''
     };
   },
 
@@ -111,6 +128,7 @@ export default {
     toggleToRemove(router, id) {
       router.push({path: `/removeplayer/${id}`});
     },
+
     sort(event) {
       switch (event.target.value) {
         case "Sort by lastname":
@@ -129,20 +147,41 @@ export default {
           this.sorting = 'firstName';
           break;
       }
-
       this.changePage(this.page + 1);
+    },
+
+    async changeCareer(event) {
+      try {
+        switch (event.target.value) {
+          case "Retirees":
+            this.retirement = true;
+            break;
+          case "All players":
+            this.retirement = '';
+            break;
+          case "Still playing":
+            this.retirement = false;
+            break;
+          default:
+            this.retirement = '';
+            break;
+        }
+        const res = await axios.get(baseURL + "?retired_like=" + this.retirement + "&q=" + this.query);
+        this.players = res.data;
+        this.pages = Math.ceil(this.players.length / 6);
+        const query = new URLSearchParams(location.search);
+        this.page = +query.get("page");
+        await this.changePage(this.page + 1);
+      } catch (e) {
+        console.error(e);
+      }
     },
 
     async changePage(n) {
       this.page = n - 1;
-      console.log("CHAMGEPAGE page = " + this.page);
       try {
-        console.log("n=" + n + ", page = " + this.page)
-        const res = await axios.get(baseURL + "?_sort=" + this.sorting + "&order=asc&_start=" + (n-1) * 6 + "&_limit=6&q=" + this.query);
+        const res = await axios.get(baseURL + "?_sort=" + this.sorting + "&order=asc&_start=" + (n-1) * 6 + "&_limit=6&retired_like=" + this.retirement + "&q=" + this.query);
         this.players = res.data;
-        // const query = new URLSearchParams(location.search);
-        // this.page = +query.get("page");
-        console.log("CHANGEPAGE QUERY page = " + this.page);
       } catch (e) {
         console.error(e);
       }
@@ -151,23 +190,16 @@ export default {
     async search(event) {
       try {
         this.query = event.target.value;
-        const res = await axios.get(baseURL + "?q=" + this.query);
+        const res = await axios.get(baseURL + "?retired_like=" + this.retirement + "&q=" + this.query);
         this.players = res.data;
         this.pages = Math.ceil(this.players.length / 6);
         const query = new URLSearchParams(location.search);
         this.page = +query.get("page");
-        console.log("SEATCH page = " + this.page);
         await this.changePage(this.page + 1);
       } catch (e) {
         console.error(e);
       }
     },
-  },
-
-  computed: {
-    filteredList() {
-      return this.players.slice(this.page * 6, this.page * 6 + 6);
-    }
   }
 };
 </script>

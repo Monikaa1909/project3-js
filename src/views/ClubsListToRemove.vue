@@ -27,7 +27,7 @@
     <div class="flex-row"
          v-if="moreOption===true">
       <select
-          @click="changeLeague($event)"
+          @change="changeLeague($event)"
           class="filter">
         <option>All leagues</option>
         <option
@@ -37,7 +37,7 @@
         </option>
       </select>
       <select
-          @click="changeCL($event)"
+          @change="changeCL($event)"
           class="filter">
         <option>All</option>
         <option>CL Winner</option>
@@ -171,7 +171,7 @@ export default {
       this.changePage(this.page + 1);
     },
 
-    changeLeague(event) {
+    async changeLeague(event) {
       switch (event.target.value) {
         case "All leagues":
           this.league = "";
@@ -180,10 +180,15 @@ export default {
           this.league = event.target.value;
           break;
       }
-      this.changePage(this.page + 1);
+      const res = await axios.get(baseURL + "?league_like=" + this.league + "&championsLeagueWinner_like=" + this.winner +"&q=" + this.query);
+      this.clubs = res.data;
+      this.pages = Math.ceil(this.clubs.length / 6);
+      const query = new URLSearchParams(location.search);
+      this.page = +query.get("page");
+      await this.changePage(this.page + 1);
     },
 
-    changeCL(event) {
+    async changeCL(event) {
       switch (event.target.value) {
         case "All":
           this.winner = "";
@@ -198,7 +203,12 @@ export default {
           this.winner = "";
           break;
       }
-      this.changePage(this.page + 1);
+      const res = await axios.get(baseURL + "?league_like=" + this.league + "&championsLeagueWinner_like=" + this.winner +"&q=" + this.query);
+      this.clubs = res.data;
+      this.pages = Math.ceil(this.clubs.length / 6);
+      const query = new URLSearchParams(location.search);
+      this.page = +query.get("page");
+      await this.changePage(this.page + 1);
     },
 
     async changePage(n) {
@@ -215,7 +225,7 @@ export default {
     async search(event) {
       try {
         this.query = event.target.value;
-        const res = await axios.get(baseURL + "?q=" + this.query);
+        const res = await axios.get(baseURL + "?league_like=" + this.league + "&championsLeagueWinner_like=" + this.winner +"&q=" + this.query);
         this.clubs = res.data;
         this.pages = Math.ceil(this.clubs.length / 6);
         const query = new URLSearchParams(location.search);

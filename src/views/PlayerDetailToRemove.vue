@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="info">Select the contract you want to remove:</div>
-    <div class="h-5"></div>
+    <div class="h-16"></div>
     <div class="flex-row">
       <select
           class="filter"
@@ -81,7 +81,7 @@ export default {
       page: 0,
       pages: 0,
       playerId: null,
-      sorting: 'years'
+      sorting: 'startYear'
     };
   },
 
@@ -110,7 +110,7 @@ export default {
           this.sorting = 'club';
           break;
         case "Sort by years":
-          this.sorting = 'years';
+          this.sorting = 'startYear';
           break;
         case "Sort by matches":
           this.sorting = 'matches';

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="info">Select the player you want to edit:</div>
-    <div class="h-5"></div>
+    <div class="h-16"></div>
     <div class="flex-row">
       <select
           class="filter"

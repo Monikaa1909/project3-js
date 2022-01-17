@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="info">Select the club you want to remove:</div>
-    <div class="h-5"></div>
+    <div class="h-16"></div>
 
     <div class="flex-row">
       <button v-if="moreOption===false" class="filter" @click="moreOption=true">✚</button>

@@ -11,145 +11,41 @@
     {
       "firstName": "Zinedine",
       "lastName": "Zidanee",
-      "country": "USA",
-      "age": 46,
+      "country": "France",
+      "age": 49,
       "retired": true,
       "id": 2
     },
     {
-      "firstName": "Paulo",
-      "lastName": "Sousa",
-      "country": "Afghanistan",
-      "age": 60,
+      "firstName": "Cristiano",
+      "lastName": "Ronaldo",
+      "country": "Portugal",
+      "age": 36,
       "retired": false,
       "id": 3
     },
     {
-      "firstName": "AAA",
-      "lastName": "Aaa",
-      "country": "Poland",
-      "age": 31,
+      "firstName": "Leo",
+      "lastName": "Messi",
+      "country": "Argentina",
+      "age": 34,
       "retired": false,
       "id": 4
     },
     {
-      "firstName": "Bbb",
-      "lastName": "Zidanee",
-      "country": "USA",
-      "age": "46",
-      "retired": false,
+      "firstName": "Ronaldo",
+      "lastName": "Nazário",
+      "country": "Brazil",
+      "age": 45,
+      "retired": true,
       "id": 5
-    },
-    {
-      "firstName": "Ccc",
-      "lastName": "Sousa",
-      "country": "Poland",
-      "age": 60,
-      "retired": false,
-      "id": 6
-    },
-    {
-      "firstName": "Ddd",
-      "lastName": "Lewandowski",
-      "country": "Poland",
-      "age": "31",
-      "retired": false,
-      "id": 7
-    },
-    {
-      "firstName": "Eee",
-      "lastName": "Zidanee",
-      "country": "USA",
-      "age": "46",
-      "retired": false,
-      "id": 8
-    },
-    {
-      "firstName": "Ffff",
-      "lastName": "Sousa",
-      "country": "Poland",
-      "age": "60",
-      "retired": false,
-      "id": 9
-    },
-    {
-      "firstName": "Ddd",
-      "lastName": "Lewandowski",
-      "country": "Poland",
-      "age": "31",
-      "retired": false,
-      "id": 10
-    },
-    {
-      "firstName": "Zinedine",
-      "lastName": "Zidanee",
-      "country": "USA",
-      "age": "46",
-      "retired": false,
-      "id": 11
-    },
-    {
-      "firstName": "Paulo",
-      "lastName": "Sousa",
-      "country": "Poland",
-      "age": "60",
-      "retired": false,
-      "id": 12
-    },
-    {
-      "firstName": "Robert",
-      "lastName": "Lewandowski",
-      "country": "Poland",
-      "age": "31",
-      "retired": false,
-      "id": 13
-    },
-    {
-      "firstName": "Zinedine",
-      "lastName": "Zidanee",
-      "country": "USA",
-      "age": "46",
-      "retired": false,
-      "id": 14
-    },
-    {
-      "firstName": "Paulo",
-      "lastName": "Sousa",
-      "country": "Poland",
-      "age": "60",
-      "retired": false,
-      "id": 15
-    },
-    {
-      "firstName": "ZT",
-      "lastName": "P",
-      "country": "POLAND",
-      "age": 32,
-      "retired": true,
-      "id": 16
-    },
-    {
-      "firstName": "Zlatan",
-      "lastName": "Imbra",
-      "country": "Szwecja",
-      "age": 39,
-      "retired": false,
-      "id": 17
-    },
-    {
-      "firstName": "Dd",
-      "lastName": "Dd",
-      "country": "Cocos (Keeling) Islands",
-      "age": 33,
-      "retired": true,
-      "id": 18
     }
   ],
   "clubs": [
     {
       "id": 0,
       "name": "Real Madryt",
-      "league": "Lique 1",
+      "league": "Primera División",
       "currentCoach": "Carlo Ancelotti",
       "founded": "1902-03-06",
       "championsLeagueWinner": true,
@@ -181,90 +77,173 @@
       "founded": "1878",
       "ground": "Old Trafford",
       "championsLeagueWinner": true
+    },
+    {
+      "id": 5,
+      "name": "Juventus",
+      "league": "Serie A",
+      "currentCoach": "Massimiliano Allegri",
+      "founded": "1897",
+      "ground": "Allianz Stadium",
+      "championsLeagueWinner": true
+    },
+    {
+      "id": 6,
+      "name": "Paris Saint-Germain",
+      "league": "Ligue 1",
+      "currentCoach": "Mauricio Pochettino",
+      "founded": "1970",
+      "ground": "Parc des Princes",
+      "championsLeagueWinner": false
+    },
+    {
+      "id": 7,
+      "name": "FC Barcelona",
+      "league": "Primera División",
+      "currentCoach": "Xavi",
+      "founded": "1899",
+      "ground": "Camp Nou",
+      "championsLeagueWinner": false
+    },
+    {
+      "id": 8,
+      "name": "AC Milan",
+      "league": "Serie A",
+      "currentCoach": "Stefano Pioli",
+      "founded": "1899",
+      "ground": "San Siro",
+      "championsLeagueWinner": true
+    },
+    {
+      "id": 9,
+      "name": "Inter Mediolan",
+      "league": "Serie A",
+      "currentCoach": "Simone Inzaghi",
+      "founded": "1908",
+      "ground": "Stadio Giuseppe Meazza",
+      "championsLeagueWinner": true
     }
   ],
   "contracts": [
     {
       "id": 0,
-      "playerId": "1",
-      "clubId": 0,
-      "years": "2014–2022",
+      "playerId": 1,
+      "clubId": 2,
+      "startYear": 2014,
+      "endYear": 2022,
       "matches": 273,
       "goals": 223
     },
     {
       "id": 1,
-      "playerId": "1",
-      "clubId": 4,
-      "years": "2010–2021",
+      "playerId": 1,
+      "clubId": 1,
+      "startYear": 2010,
+      "endYear": 2014,
       "matches": 131,
       "goals": 74
     },
     {
       "id": 2,
-      "playerId": "2",
-      "clubId": "1",
-      "years": "2010–2014",
-      "matches": 131,
-      "goals": 74
+      "playerId": 3,
+      "clubId": 4,
+      "startYear": 2021,
+      "endYear": 2022,
+      "matches": 16,
+      "goals": 8
     },
     {
-      "playerId": 1,
-      "clubId": 1,
-      "years": "2010-2020",
-      "matches": "12",
-      "goals": "11",
-      "id": 3
-    },
-    {
-      "playerId": 1,
-      "clubId": 1,
-      "years": "2",
-      "matches": 3,
-      "goals": 41,
-      "id": 4
-    },
-    {
-      "playerId": 1,
-      "clubId": 1,
-      "years": "2",
-      "matches": "2",
-      "goals": "2",
-      "id": 5
-    },
-    {
-      "playerId": 1,
-      "clubId": 2,
-      "years": "32",
-      "matches": 321,
-      "goals": 321,
-      "id": 6
-    },
-    {
-      "playerId": 1,
-      "clubId": 2,
-      "years": "333",
-      "matches": 333,
-      "goals": 321,
-      "id": 8
-    },
-    {
-      "playerId": 2,
-      "clubId": 2,
-      "years": "2011-2038",
-      "matches": 33,
-      "goals": 45,
-      "id": 9
-    },
-    {
+      "id": 3,
       "playerId": 3,
       "clubId": 0,
-      "years": "1990-2002",
-      "matches": 2,
-      "goals": 0,
-      "id": 10
+      "startYear": 2009,
+      "endYear": 2018,
+      "matches": 292,
+      "goals": 311
+    },
+    {
+      "id": 4,
+      "playerId": 3,
+      "clubId": 4,
+      "startYear": 2003,
+      "endYear": 2009,
+      "matches": 196,
+      "goals": 84
+    },
+    {
+      "id": 5,
+      "playerId": 3,
+      "clubId": 5,
+      "startYear": 2018,
+      "endYear": 2021,
+      "matches": 98,
+      "goals": 81
+    },
+    {
+      "id": 6,
+      "playerId": 2,
+      "clubId": 0,
+      "startYear": 2001,
+      "endYear": 2006,
+      "matches": 155,
+      "goals": 37
+    },
+    {
+      "id": 7,
+      "playerId": 2,
+      "clubId": 5,
+      "startYear": 1996,
+      "endYear": 2001,
+      "matches": 151,
+      "goals": 24
+    },
+    {
+      "id": 8,
+      "playerId": 4,
+      "clubId": 6,
+      "startYear": 2021,
+      "endYear": 2022,
+      "matches": 11,
+      "goals": 1
+    },
+    {
+      "id": 9,
+      "playerId": 4,
+      "clubId": 7,
+      "startYear": 2004,
+      "endYear": 2021,
+      "matches": 520,
+      "goals": 474
+    },
+    {
+      "id": 10,
+      "playerId": 5,
+      "clubId": 8,
+      "startYear": 2007,
+      "endYear": 2008,
+      "matches": 20,
+      "goals": 9
+    },
+    {
+      "id": 11,
+      "playerId": 5,
+      "clubId": 0,
+      "startYear": 1997,
+      "endYear": 2002,
+      "matches": 68,
+      "goals": 49
+    },
+    {
+      "id": 12,
+      "playerId": 5,
+      "clubId": 9,
+      "startYear": 2002,
+      "endYear": 2007,
+      "matches": 127,
+      "goals": 83
     }
   ],
+
   "countries": [
     {
       "name": "Afghanistan",

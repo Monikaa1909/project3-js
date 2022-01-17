@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="info" v-if="noPlayers">There are no players</div>
-    <div class="h-5"></div>
+    <div class="h-16"></div>
     <div class="flex-row">
       <select
           class="filter"

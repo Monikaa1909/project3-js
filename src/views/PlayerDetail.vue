@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="info" v-if="noContracts">There are no contracts</div>
-    <div class="h-5"></div>
+    <div class="h-16"></div>
 
     <div class="flex-row">
       <select
@@ -91,7 +91,7 @@ export default {
       page: 0,
       pages: 0,
       playerId: null,
-      sorting: 'years',
+      sorting: 'startYear',
       noContracts: false
     };
   },
@@ -130,7 +130,7 @@ export default {
           this.sorting = 'club';
           break;
         case "Sort by years":
-          this.sorting = 'years';
+          this.sorting = 'startYear';
           break;
         case "Sort by matches":
           this.sorting = 'matches';

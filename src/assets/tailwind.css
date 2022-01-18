@@ -228,3 +228,7 @@ input:focus, select:focus, button.filter:focus {
     background-color: white;
     color: #f6b93b;
 }
+
+.mainClubs tr {
+    pointer-events: none;
+}

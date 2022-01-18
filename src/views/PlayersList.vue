@@ -44,16 +44,16 @@
       </tr>
       </thead>
       <tbody>
-      <tr
-          @click="toggleToDetail($router, player.id)"
-          v-for="player of players"
-          :class="{ retired: player.retired }"
-          :key="player.id">
-        <td>{{player.firstName}}</td>
-        <td>{{player.lastName}}</td>
-        <td>{{player.country}}</td>
-        <td>{{player.age}}</td>
-      </tr>
+        <tr
+            @click="toggleToDetail($router, player.id)"
+            v-for="player of players"
+            :class="{ retired: player.retired }"
+            :key="player.id">
+          <td>{{player.firstName}}</td>
+          <td>{{player.lastName}}</td>
+          <td>{{player.country}}</td>
+          <td>{{player.age}}</td>
+        </tr>
       </tbody>
     </table>
 

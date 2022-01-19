@@ -8,9 +8,8 @@
 
     <div class="h-16" v-else-if="label === '' && !noClubs"></div>
 
-<!--    <div class="h-16" v-else ></div>-->
-
     <ClubTableFilters
+        v-if="!noClubs"
         :moreOption="moreOption"
         :sort="sort"
         :setMoreOptions="setMoreOptions"
@@ -81,6 +80,10 @@ export default {
     label: {
       type: String,
       default: ''
+    },
+    createMessage: {
+      type: Function,
+      default: () => ({return: null})
     }
   },
 

@@ -1,11 +1,11 @@
 <template>
   <div>
-    <ClubTable class="mainClubs" />
+    <ClubTable class="mainClubs"
+               :message="message"/>
     <MainButtons
         :toggleToEdit="toggleToEdit"
         :toggleToRemove="toggleToRemove"
-        :toggleToAdd="toggleToAdd"
-        :message="message"/>
+        :toggleToAdd="toggleToAdd"/>
   </div>
 </template>
 

@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="flex-row">
       <button v-if="moreOption===false" class="filter" @click="setMoreOptions">✚</button>
       <button v-else-if="moreOption===true" class="filter" @click="setMoreOptions">━</button>
@@ -42,7 +41,6 @@
         <option>Not CL Winner</option>
       </select>
     </div>
-  </div>
 </template>
 
 <script>

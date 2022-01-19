@@ -2,7 +2,8 @@
   <ClubTable class="editable"
              :toggleToRemove="toggleToRemove"
              :message="message"
-             :label="label"/>
+             :label="label">
+  </ClubTable>
 </template>
 
 <script>

@@ -1,5 +1,9 @@
 <template>
-  <div class="info"> LOADING...</div>
+  <div class="loader">
+    <p> LOADING...</p>
+    <div class="animate-spin ">◌</div>
+  </div>
+
 </template>
 
 <script>

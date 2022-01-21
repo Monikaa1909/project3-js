@@ -232,3 +232,21 @@ input:focus, select:focus, button.filter:focus {
 .mainClubs tr {
     pointer-events: none;
 }
+
+.loader {
+    color: #f6b93b;
+    font-weight: bold;
+    flex-direction: column;
+    margin-left: 400px;
+    padding: 30px;
+    letter-spacing: 0.05em;
+}
+
+.loader p {
+    margin-top: 100px;
+    font-size: 50px;
+}
+
+.loader div {
+    font-size: 250px;
+}

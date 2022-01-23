@@ -33,7 +33,7 @@
 
 <script>
 export default {
-  name: "ClubTablePages",
+  name: "TablePages",
   props: {
     page: Number,
     pages: Number,

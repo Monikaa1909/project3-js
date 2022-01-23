@@ -44,7 +44,7 @@
       </tbody>
     </table>
 
-    <ClubTablePages
+    <TablePages
         v-if="!noClubs"
         :page="page"
         :pages="pages"
@@ -57,7 +57,7 @@
 
 const baseURL = "http://localhost:3001/clubs";
 import ClubTableFilters from "@/components/ClubTableFilters";
-import ClubTablePages from "@/components/ClubTablePages";
+import TablePages from "@/components/TablePages";
 import {ref} from "vue";
 import axios from "axios";
 
@@ -65,7 +65,7 @@ export default {
   name: "ClubTable",
   components: {
     ClubTableFilters: ClubTableFilters,
-    ClubTablePages: ClubTablePages,
+    TablePages: TablePages,
   },
   props: {
     toggleToEdit: {

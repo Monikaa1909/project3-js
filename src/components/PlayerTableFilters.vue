@@ -7,11 +7,10 @@
     <select
         class="filter"
         @change="sort($event)">
-      <option>Sort by name</option>
-      <option>Sort by league</option>
-      <option>Sort by coach</option>
-      <option>Sort by founded</option>
-      <option>Sort by ground</option>
+      <option>Sort by firstname</option>
+      <option>Sort by lastname</option>
+      <option>Sort by country</option>
+      <option>Sort by age</option>
     </select>
 
     <input type="text"
@@ -25,14 +24,12 @@
   <div class="flex-row"
        v-if="moreOption===true">
     <select
-        @change="changeLeague($event)"
-        class="filter">
-      <option>retireds</option>
-      <option
-          v-for="retired in retireds"
-          v-bind:key="retired">
-        {{ retired }}
-      </option>
+        class="filter"
+        @change="changeCareer($event)"
+    >
+      <option>All players</option>
+      <option>Still playing</option>
+      <option>Retirees</option>
     </select>
   </div></template>
 

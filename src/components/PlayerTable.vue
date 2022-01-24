@@ -29,7 +29,7 @@
       <tr
           @click="toggleToDetail($router, player.id)"
           v-for="player of players"
-          :class="{ retired: player.retired }"
+
           :key="player.id">
         <td>{{player.firstName}}</td>
         <td>{{player.lastName}}</td>
@@ -77,12 +77,10 @@ export default {
       type: String,
       default: ''
     },
-    createMessage: {
+    toggleToDetail: {
       type: Function,
       default: () => ({return: null})
-    },
-
-    toggleToDetail: Function
+    }
   },
 
   async setup() {

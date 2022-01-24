@@ -80,10 +80,6 @@ export default {
     label: {
       type: String,
       default: ''
-    },
-    createMessage: {
-      type: Function,
-      default: () => ({return: null})
     }
   },
 

@@ -124,7 +124,7 @@ export default {
     async function changePage(n) {
       page.value = n - 1;
       try {
-        const res = await axios.get(baseURL + "?_sort=" + sorting.value + "&order=asc&_start=" + (n-1) * 6 + "&_limit=6&retired_like=" + retirement.value + "&q=" + query.value);
+        const res = await axios.get(baseURL + "?_sort=" + sorting.value + "&order=asc&_start=" + (n-1) * 6 + "&_limit=6&retired_like=" + retirement.value + "&q=" + params.value);
         players.value = res.data;
       } catch (e) {
         console.error(e);
@@ -156,24 +156,23 @@ export default {
       try {
         switch (event.target.value) {
           case "Retirees":
-            retirement.value = true;
+            retirement.value = 'true';
             break;
           case "All players":
             retirement.value = '';
             break;
           case "Still playing":
-            retirement.value = false;
+            retirement.value = 'false';
             break;
           default:
             retirement.value = '';
             break;
         }
 
-        res = await axios.get(baseURL + "?retired_like=" + retirement.value + "&q=" + query.value);
+        res = await axios.get(baseURL + "?retired_like=" + retirement.value + "&q=" + params.value);
         players.value = res.data;
         pages.value = Math.ceil(players.value.length / 6);
-        const query = new URLSearchParams(location.search);
-        page.value = +query.get("page");
+        page.value = +query.value.get("page");
         await changePage(page.value + 1);
       } catch (e) {
         console.error(e);
@@ -183,14 +182,14 @@ export default {
     async function search(event) {
       try {
         params.value = event.target.value;
-        res = await axios.get(baseURL + "?retired_like=" + retirement.value + "&q=" + query.value);
+        res = await axios.get(baseURL + "?retired_like=" + retirement.value + "&q=" + params.value);
         players.value = res.data;
         if (players.value.length === 0) {
           noPlayers.value = true;
         }
         pages.value = Math.ceil(players.value.length / 6);
         page.value = +query.value.get("page");
-        console.log("page = " + page.value);
+        console.log(pages.value);
       } catch (e) {
         console.error(e);
       }

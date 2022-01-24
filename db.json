@@ -53,7 +53,7 @@
       "lastName": "Jr",
       "country": "Brasil",
       "age": 29,
-      "retired": false,
+      "retired": true,
       "id": 7
     }
   ],

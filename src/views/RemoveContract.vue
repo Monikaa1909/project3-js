@@ -6,7 +6,7 @@
       Are you sure you want to delete this contract?
     </div>
     <button class="btn btn-no" @click="removeContract($router, $event)">Yes</button>
-    <button class="btn btn-no" @click="$router.push('/clubs')">No</button>
+    <button class="btn btn-no" @click="noRemoveContract($router)">No</button>
   </div>
 </template>
 
@@ -14,43 +14,42 @@
 
 import axios from "axios";
 const baseURLcontracts = "http://localhost:3001/contracts";
+import { useRoute } from 'vue-router';
+import {ref} from "vue";
 
 export default {
   name: "RemoveContract",
-  data() {
-    return {
-      contracts: [],
-      id: null,
-      playerId: null,
-    };
-  },
+  async setup() {
+    const playerId = ref(null);
+    const id = ref(null);
+    const route = ref(null);
 
-  async created() {
     try {
-      this.id = this.$route.params.id
-      const resContract = await axios.get(baseURLcontracts + "/" + this.$route.params.id)
-      this.playerId = resContract.data.playerId
-
-      console.log(this.id)
+      route.value = useRoute();
+      id.value = route.value.params.id;
+      const res = await axios.get(baseURLcontracts + "/" + id.value);
+      playerId.value = res.data.playerId;
     } catch (e) {
       console.log(e)
     }
-  },
 
-  methods: {
-    async removeContract(router) {
+    async function removeContract(router) {
       try {
-        await axios.delete(baseURLcontracts + "/" + this.id)
-
-        await router.push({path: `/playerdetail/${this.playerId}`});
+        await axios.delete(baseURLcontracts + "/" + id.value)
+        await router.push({path: `/contractslist/${playerId.value}`});
       } catch (e) {
         console.log(e)
       }
     }
-  }
+
+    async function noRemoveContract(router) {
+      try {
+        await router.push({path: `/contractslist/${playerId.value}`});
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    return { id, route, playerId, removeContract, noRemoveContract};
+  },
 }
 </script>
-
-<style scoped>
-
-</style>

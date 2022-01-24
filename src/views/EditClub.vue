@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="info" v-if="somethingWrong">Fill in the fields correctly</div>
-    <div class="info"></div>
-    <div class="h-5"></div>
+    <div class="info" v-else ></div>
+
     <form @submit.prevent="editClub($router)">
       <div class="editfield flex-row">
         <label class="editlabel">Name:</label>
@@ -41,7 +41,7 @@
         />
       </div>
       <div class="editfield flex-row">
-        <label>Is champions league winner?</label>
+        <label>Is CL winner?</label>
           <select
               class="appearance-none"
               v-model="championsLeagueWinner"
@@ -55,8 +55,7 @@
         <input
             v-model="ground"
             aria-label="Ground"
-            placeholder="Ground"
-        />
+            placeholder="Ground"/>
       </div>
       <div>
         <button class="submit" >Done</button>
@@ -67,68 +66,64 @@
 
 <script>
 import axios from "axios";
+import {ref} from "vue";
 const baseURL = "http://localhost:3001/clubs";
+import { useRoute } from 'vue-router'
 
 export default {
   name: "EditClub",
+  async setup() {
+    const clubs = ref(null);
+    const id = ref(null);
+    const name = ref('');
+    const league = ref('');
+    const currentCoach = ref('');
+    const founded = ref(null);
+    const championsLeagueWinner = ref(null);
+    const ground = ref(null);
+    const bools = ref(['No', 'Yes']);
+    const somethingWrong = ref(false);
+    const route = ref(null);
 
-  data() {
-    return {
-      clubs: [],
-      id: null,
-      name: "",
-      league: "",
-      currentCoach: "",
-      founded: null,
-      championsLeagueWinner: null,
-      ground: null,
-      bools:  ['No', 'Yes'],
-      somethingWrong: false
-    };
-  },
-
-  async created() {
     try {
-
-      console.log('Params: ', this.$route.params.id);
-      const res = await axios.get(baseURL + "/" + this.$route.params.id)
-
-      this.id = res.data.id;
-      this.name = res.data.name;
-      this.league = res.data.league;
-      this.currentCoach = res.data.currentCoach;
-
-      this.founded = res.data.founded;
-      this.championsLeagueWinner = res.data.championsLeagueWinner === true ? 'Yes' : 'No'
-      this.ground = res.data.ground;
+      route.value = useRoute();
+      const res = await axios.get(baseURL + "/" + route.value.params.id)
+      id.value = res.data.id;
+      name.value = res.data.name;
+      league.value = res.data.league;
+      currentCoach.value = res.data.currentCoach;
+      founded.value = res.data.founded;
+      championsLeagueWinner.value = res.data.championsLeagueWinner === true ? 'Yes' : 'No'
+      ground.value = res.data.ground;
 
     } catch (e) {
       console.error(e);
     }
-  },
 
-  methods: {
-    async editClub(router) {
-      var regExp = /[a-zA-Z]/g;
+    async function editClub(router) {
+      const regExp = /[a-zA-Z]/g;
 
-      if (this.name.length > 0 && !regExp.test(this.founded)) {
+      if (name.value.length > 0 && !regExp.test(founded.value)) {
         try {
-          await Promise.all([axios.patch(baseURL + "/" + this.id, {
-            id: this.id,
-            name: this.name,
-            league: this.league,
-            currentCoach: this.currentCoach,
-            founded: this.founded,
-            ground: this.ground,
-            championsLeagueWinner: this.championsLeagueWinner === "No" ? this.championsLeagueWinner = false : this.championsLeagueWinner = true
+          await Promise.all([axios.patch(baseURL + "/" + id.value, {
+            id: id.value,
+            name: name.value,
+            league: league.value,
+            currentCoach: currentCoach.value,
+            founded: founded.value,
+            ground: ground.value,
+            championsLeagueWinner: championsLeagueWinner.value === "No" ? championsLeagueWinner.value = false : championsLeagueWinner.value = true
           })]);
 
           router.push('/clubs')
         } catch (e) {
           console.error(e);
         }
-      } else this.somethingWrong = true
+      } else somethingWrong.value = true
     }
-  }
+
+    return { clubs, id, name, league, currentCoach, founded, championsLeagueWinner, ground, bools, somethingWrong, route, editClub};
+  },
+
 }
 </script>

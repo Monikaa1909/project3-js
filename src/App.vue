@@ -10,8 +10,8 @@
       <div class="w-1/5"></div>
       <router-view v-slot="{ Component }" id="router-view">
         <template v-if="Component">
-          <transition mode="out-in">
-            <keep-alive>
+<!--          <transition mode="out-in">-->
+<!--            <keep-alive>-->
               <suspense>
                 <component :is="Component"></component>
                 <template #fallback>
@@ -20,8 +20,8 @@
                   </div>
                 </template>
               </suspense>
-            </keep-alive>
-          </transition>
+<!--            </keep-alive>-->
+<!--          </transition>-->
         </template>
       </router-view>
       <div class="w-1/5"></div>

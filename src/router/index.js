@@ -72,19 +72,20 @@ const routes = [
     component: () => import('../views/RemoveClub')
   },
   {
-    path: '/playerdetail/:id',
-    name: 'PlayerDetail',
-    component: () => import('../views/PlayerDetail')
+    path: '/contractslist/:id',
+    name: 'ContractsList',
+    props: true,
+    component: () => import('../views/ContractsList')
   },
   {
-    path: '/playerdetailtoedit/:id',
-    name: 'PlayerDetailToEdit',
-    component: () => import('../views/PlayerDetailToEdit')
+    path: '/contractstoedit/:id',
+    name: 'ContractsToEdit',
+    component: () => import('../views/ContractsListToEdit')
   },
   {
-    path: '/playerdetailtoremove/:id',
-    name: 'PlayerDetailToRemove',
-    component: () => import('../views/PlayerDetailToRemove')
+    path: '/contractstoremove/:id',
+    name: 'ContractsToRemove',
+    component: () => import('../views/ContractsListToRemove')
   },
   {
     path: '/editcontract/:id',

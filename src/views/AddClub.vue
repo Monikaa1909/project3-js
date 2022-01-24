@@ -1,6 +1,8 @@
 <template>
   <div>
     <div class="info" v-if="somethingWrong">Fill in the fields correctly</div>
+    <div class="info" v-else ></div>
+
     <form @submit.prevent="addClub($router)">
       <div class="editfield flex-row">
         <label class="editlabel">Name:</label>
@@ -39,7 +41,7 @@
         />
       </div>
       <div class="editfield flex-row">
-        <label>Is champions league winner?</label>
+        <label>Is CL winner?</label>
         <select
             class="appearance-none"
             v-model="championsLeagueWinner"
@@ -59,7 +61,7 @@
 
       <div class="flex-row">
         <div class="w-1/5"></div>
-        <button @click="$router.push('/clubs')" >Back to all clubs</button>
+        <button @click="$router.push('/clubs')">Back to all clubs</button>
         <button class="submit" >Add</button>
         <div class="w-1/5"></div>
       </div>
@@ -71,56 +73,47 @@
 <script>
 import axios from "axios";
 const baseURL = "http://localhost:3001/clubs";
+import {ref} from "vue";
 
 export default {
   name: "AddClub",
 
-  data() {
-    return {
-      clubs: [],
-      id: null,
-      name: "",
-      league: "",
-      currentCoach: "",
-      founded: null,
-      championsLeagueWinner: null,
-      ground: null,
-      bools:  ['No', 'Yes'],
-      somethingWrong: false
-    };
-  },
+  async setup() {
+    const clubs = ref(null);
+    const id = ref(null);
+    const name = ref('');
+    const league = ref('');
+    const currentCoach = ref('');
+    const founded = ref(null);
+    const championsLeagueWinner = ref(null);
+    const ground = ref(null);
+    const bools = ref(['No', 'Yes']);
+    const somethingWrong = ref(false);
 
-  async created() {
-    try {
-      const res = await axios.get(baseURL);
-      this.players = res.data;
-    } catch (e) {
-      console.error(e);
-    }
-  },
+    async function addClub(router) {
+      const regExp = /[a-zA-Z]/g;
 
-  methods: {
-    async addClub(router) {
-      var regExp = /[a-zA-Z]/g;
-
-      if (this.name.length > 0 && !regExp.test(this.founded)) {
+      if (name.value.length > 0 && !regExp.test(founded.value)) {
         try {
           await Promise.all([axios.post(baseURL, {
-            id: this.id,
-            name: this.name,
-            league: this.league,
-            currentCoach: this.currentCoach,
-            founded: this.founded,
-            ground: this.ground,
-            championsLeagueWinner: this.championsLeagueWinner === null ? this.championsLeagueWinner = false : this.championsLeagueWinner === "true"
+            id: id.value,
+            name: name.value,
+            league: league.value,
+            currentCoach: currentCoach.value,
+            founded: founded.value,
+            ground: ground.value,
+            championsLeagueWinner: championsLeagueWinner.value === null ? championsLeagueWinner.value = false : championsLeagueWinner.value === "true"
           })]);
-
           router.push('/clubs')
         } catch (e) {
           console.error(e);
         }
-      } else this.somethingWrong = true
+      } else {
+        somethingWrong.value = true;
+      }
     }
-  }
+
+    return { clubs, id, name, league, currentCoach, founded, championsLeagueWinner, ground, bools, somethingWrong, addClub};
+  },
 }
 </script>

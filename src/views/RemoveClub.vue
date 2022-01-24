@@ -12,45 +12,33 @@
 
 <script>
 import axios from "axios";
+import {ref} from "vue";
 const baseURL = "http://localhost:3001/clubs";
+import { useRoute } from 'vue-router'
 
 export default {
   name: "RemoveClub",
-  data() {
-    return {
-      clubs: [],
-      id: null,
-      name: "",
-      league: "",
-      currentCoach: "",
-      founded: null,
-      championsLeagueWinner: null,
-      ground: null
-    };
-  },
+  async setup() {
+    const id = ref(null);
+    const route = ref(null);
 
-  async created() {
     try {
-      // var pathName = window.location.pathname
-      // var splited = pathName.split("/")
-      this.id = this.$route.params.id
-      console.log(this.id)
+      route.value = useRoute();
+      id.value = route.value.params.id;
     } catch (e) {
       console.log(e)
     }
-  },
 
-  methods: {
-    async removeClub(router) {
+    async function removeClub(router) {
       try {
-        await axios.delete(baseURL + "/" + this.id)
+        await axios.delete(baseURL + "/" + id.value)
         router.push('/clubs')
       } catch (e) {
         console.log(e)
       }
     }
-  }
+
+    return { id, route, removeClub};
+  },
 }
 </script>
-<style scoped>
-</style>

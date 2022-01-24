@@ -62,7 +62,7 @@ table {
     border-color: white;
 }
 
-.editable {
+.editable table {
     opacity: 0.7;
 }
 
@@ -229,7 +229,7 @@ input:focus, select:focus, button.filter:focus {
     color: #f6b93b;
 }
 
-.mainClubs tr {
+.tableNoPointers tr {
     pointer-events: none;
 }
 

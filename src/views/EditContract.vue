@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="info" v-if="somethingWrong">Fill in the fields correctly </div>
-    <div class="h-5"></div>
+    <div class="info" v-else ></div>
+
     <form @submit.prevent="editContract($router)">
       <div class="editfield flex-row">
         <label class="editlabel">Player:</label>
@@ -70,77 +71,69 @@ import axios from "axios";
 const baseURLplayers = "http://localhost:3001/players";
 const baseURLclubs = "http://localhost:3001/clubs";
 const baseURLcontracts = "http://localhost:3001/contracts";
-
+import {ref} from "vue";
+import { useRoute } from 'vue-router'
 
 export default {
   name: "AddContract",
+  async setup() {
+    const firstName = ref('');
+    const lastName = ref('');
+    const clubs = ref(null);
+    const playerId = ref(null);
+    const startYear = ref(null);
+    const endYear = ref(null);
+    const matches = ref(null);
+    const goals = ref(null);
+    const clubId = ref(null);
+    const club = ref(null);
+    const somethingWrong = ref(false);
+    const route = ref(null);
 
-  data() {
-    return {
-      firstName: "",
-      lastName: "",
-      clubs: [],
-      playerId: null,
-      startYear: null,
-      endYear: null,
-      matches: null,
-      goals: null,
-      clubId: 0,
-      club: null,
-      somethingWrong: false
-    }
-  },
-
-  async created() {
     try {
-      const resContract = await axios.get(baseURLcontracts + "/" + this.$route.params.id)
+      route.value = useRoute();
+
+      const resContract = await axios.get(baseURLcontracts + "/" + route.value.params.id)
       const resPlayer = await axios.get(baseURLplayers + "/" + resContract.data.playerId)
       const resClub = await axios.get(baseURLclubs)
 
-      this.playerId = resContract.data.playerId
-      this.firstName = resPlayer.data.firstName
-      this.lastName = resPlayer.data.lastName
-
-      this.startYear = resContract.data.startYear
-      this.endYear = resContract.data.endYear
-      this.matches = resContract.data.matches
-      this.goals = resContract.data.goals
-      this.clubs = resClub.data
-      this.clubId = this.clubs[0].id
-      console.log("selected index is" + this.clubId)
+      playerId.value = resPlayer.data.id
+      firstName.value = resPlayer.data.firstName
+      lastName.value = resPlayer.data.lastName
+      startYear.value = resContract.data.startYear
+      endYear.value = resContract.data.endYear
+      matches.value = resContract.data.matches
+      goals.value = resContract.data.goals
+      clubs.value = resClub.data
+      clubId.value= clubs.value[0].id
 
     } catch (e) {
       console.error(e);
     }
-  },
 
-  methods: {
-    async getClubId(event, selectedIndex) {
-      console.log(event, selectedIndex);
-      this.clubId = this.clubs[selectedIndex].id;
-    },
+    async function getClubId(event, selectedIndex) {
+      clubId.value = clubs.value[selectedIndex].id;
+    }
 
-    async editContract(router) {
+    async function editContract(router) {
       try {
-        if (this.endYear >= this.startYear && !isNaN(this.matches) && !isNaN(this.goals) && !isNaN(this.startYear) && !isNaN(this.endYear)) {
-          await Promise.all([axios.patch(baseURLcontracts + "/" + this.$route.params.id, {
-            clubId: this.clubId,
-            startYear: parseInt(this.startYear),
-            endYear: parseInt(this.endYear),
-            matches: parseInt(this.matches),
-            goals: parseInt(this.goals),
+        if (endYear.value >= startYear.value && !isNaN(matches.value) && !isNaN(goals.value) && !isNaN(startYear.value) && !isNaN(endYear.value)) {
+          await Promise.all([axios.patch(baseURLcontracts + "/" + route.value.params.id, {
+            clubId: clubId.value,
+            startYear: parseInt(startYear.value),
+            endYear: parseInt(endYear.value),
+            matches: parseInt(matches.value),
+            goals: parseInt(goals.value),
           })]);
-          await router.push({path: `/playerdetail/${this.playerId}`});
-        } else this.somethingWrong = true
+          await router.push({path: `/contractslist/${playerId.value}`});
+        } else somethingWrong.value = true
 
       } catch (e) {
         console.error(e);
       }
     }
-  }
+
+    return { route, firstName, lastName, clubs, playerId, startYear, endYear, matches, goals, clubId, club, somethingWrong, getClubId, editContract };
+  },
 }
 </script>
-
-<style scoped>
-</style>
-

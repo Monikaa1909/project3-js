@@ -41,7 +41,7 @@
       "id": 5
     },
     {
-      "firstName": "Gianluigi",
+      "firstName": "Gianluigii",
       "lastName": "Buffon",
       "country": "Italy",
       "age": 43,
@@ -51,7 +51,7 @@
     {
       "firstName": "Neymar",
       "lastName": "Jr",
-      "country": "Brasil",
+      "country": "Brazil",
       "age": 29,
       "retired": true,
       "id": 7
@@ -63,7 +63,7 @@
       "name": "Real Madryt",
       "league": "Primera División",
       "currentCoach": "Carlo Ancelotti",
-      "founded": "1902-03-06",
+      "founded": "1902",
       "championsLeagueWinner": true,
       "ground": "Santiago Bernabéu"
     },
@@ -72,7 +72,7 @@
       "name": "Borussia Dortmund",
       "league": "Bundesliga",
       "currentCoach": "Marco Rose",
-      "founded": "1909-12-19 ",
+      "founded": "1909",
       "championsLeagueWinner": false,
       "ground": "Signal Iduna Park"
     },
@@ -81,7 +81,7 @@
       "name": "Bayern Monachium",
       "league": "Bundesliga",
       "currentCoach": "Julian Nagelsmann",
-      "founded": "1900-02-27 ",
+      "founded": "1900",
       "championsLeagueWinner": true,
       "ground": "Allianz Arena"
     },
@@ -147,6 +147,15 @@
       "founded": "1886",
       "ground": "Emirates Stadium",
       "championsLeagueWinner": true
+    },
+    {
+      "id": 10,
+      "name": "sd",
+      "league": "d",
+      "currentCoach": "d",
+      "founded": "1",
+      "ground": null,
+      "championsLeagueWinner": false
     }
   ],
   "contracts": [
@@ -320,6 +329,15 @@
       "endYear": 2017,
       "matches": 123,
       "goals": 68
+    },
+    {
+      "playerId": 3,
+      "clubId": 0,
+      "startYear": 1,
+      "endYear": 22,
+      "matches": 3,
+      "goals": 4,
+      "id": 20
     }
   ],
   "countries": [

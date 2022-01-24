@@ -1,6 +1,7 @@
 <template>
   <div>
-    <PlayerTable class="mainPlayers"
+    <PlayerTable
+                 :toggleTo="toggleToDetail"
                  :message="message"/>
     <MainButtons
         :toggleToEdit="toggleToEdit"
@@ -19,16 +20,16 @@ export default {
 
 name: "ClubsList",
 components: {
-PlayerTable: PlayerTable,
-MainButtons: MainButtons
+  PlayerTable: PlayerTable,
+  MainButtons: MainButtons
 },
 
   setup() {
     const message = ref('There are no players')
 
-    // function toggleToDetail(router, id) {
-    //   router.push({path: `/playerdetail/${id}`});
-    // }
+    function toggleToDetail(router, id) {
+      router.push({path: `/contractslist/${id}`});
+    }
 
     function toggleToAdd(router) {
 

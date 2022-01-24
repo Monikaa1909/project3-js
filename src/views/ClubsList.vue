@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ClubTable class="mainClubs"
+    <ClubTable class="tableNoPointers"
                :message="message"/>
     <MainButtons
         :toggleToEdit="toggleToEdit"

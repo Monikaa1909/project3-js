@@ -1,6 +1,6 @@
 <template>
   <ClubTable class="editable"
-             :toggleToRemove="toggleToRemove"
+             :toggleTo="toggleToRemove"
              :message="message"
              :label="label">
   </ClubTable>

@@ -31,7 +31,7 @@
       </thead>
       <tbody>
       <tr
-          @click="toggleToEdit($router, club.id); toggleToRemove($router, club.id)"
+          @click="toggleTo($router, club.id)"
           v-for="club of clubs"
           :key="club.id">
         <td>{{club.name}}</td>
@@ -68,11 +68,7 @@ export default {
     TablePages: TablePages,
   },
   props: {
-    toggleToEdit: {
-      type: Function,
-      default: () => ({})
-    },
-    toggleToRemove: {
+    toggleTo: {
       type: Function,
       default: () => ({})
     },

@@ -1,7 +1,8 @@
 <template>
   <div>
-    <div class="info" v-if="somethingWrong">Fill in the fields correctly </div>
-    <div class="h-5"></div>
+    <div class="info" v-if="somethingWrong">Enter the correct firstname, lastname and age</div>
+    <div class="info" v-else ></div>
+
     <form @submit.prevent="addPlayer($router)">
       <div class="editfield flex-row">
         <label class="editlabel">Firstname:</label>
@@ -71,60 +72,54 @@
 import axios from "axios";
 const baseURL = "http://localhost:3001/players";
 const baseURLcountries = "http://localhost:3001/countries";
+import {ref} from "vue"
 
 export default {
   name: "AddPlayer",
-  data() {
-    return {
-      players: [],
-      countries: [],
-      firstName: "",
-      lastName: "",
-      country: null,
-      age: null,
-      retired: null,
-      bools: ['No', 'Yes'],
-      somethingWrong: false
-    };
-  },
 
-  async created() {
+  async setup() {
+    const players = ref(null);
+    const countries = ref(null);
+    const id = ref(null);
+    const firstName = ref('');
+    const lastName = ref('');
+    const country = ref(null);
+    const age = ref(null);
+    const retired = ref(null);
+    const bools = ref(['No', 'Yes']);
+    const somethingWrong = ref(false);
+
     try {
-      const res = await axios.get(baseURL);
-      const resCountries = await axios.get(baseURLcountries)
-      this.countries = resCountries.data;
-      this.players = res.data;
+      const res = await axios.get(baseURLcountries);
+      countries.value = [...res.data];
     } catch (e) {
       console.error(e);
     }
-  },
 
-  methods: {
-    async addPlayer(router) {
-      if (this.firstName.length > 0 && !isNaN(this.age) && this.lastName.length > 0) {
+    async function addPlayer(router) {
+      if (firstName.value.length > 0 && !isNaN(age.value) && lastName.value.length > 0) {
         try {
-          const [res] = await Promise.all([axios.post(baseURL, {
-            firstName: this.firstName,
-            lastName: this.lastName,
-            country: this.country,
-            age: parseInt(this.age),
-            retired: this.retired === "No" ? this.retired = false : this.retired = true
+          await Promise.all([axios.post(baseURL, {
+            firstName: firstName.value,
+            lastName: lastName.value,
+            country: country.value,
+            age: parseInt(age.value),
+            retired: retired.value === "No" ? retired.value = false : retired.value = true
           })]);
 
-          this.players = [...this.players, res.data];
-
-          this.firstName = "";
-          this.lastName = ""
-          this.age = null
-          this.retired = null
+          firstName.value = "";
+          lastName.value = ""
+          age.value = null
+          retired.value = null
         } catch (e) {
           console.error(e);
         }
-
         router.push('/')
-      } else this.somethingWrong = true
+      } else {
+        somethingWrong.value = true;
+      }
     }
-  }
+    return { players, countries, id, firstName, lastName, country, age, retired, bools, somethingWrong, addPlayer};
+  },
 };
 </script>
--->

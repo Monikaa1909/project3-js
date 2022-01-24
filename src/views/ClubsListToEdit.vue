@@ -1,6 +1,6 @@
 <template>
     <ClubTable class="editable"
-      :toggleToEdit="toggleToEdit"
+      :toggleTo="toggleToEdit"
       :message="message"
       :label="label"/>
 </template>

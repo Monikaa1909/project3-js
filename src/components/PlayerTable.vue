@@ -27,10 +27,8 @@
       </thead>
       <tbody>
       <tr
-
-          @click="toggleToDetail($router, player.id)"
+          @click="toggleTo($router, player.id)"
           v-for="player of players"
-
           :key="player.id">
         <td>{{player.firstName}}</td>
         <td>{{player.lastName}}</td>
@@ -65,30 +63,25 @@ export default {
     TablePages: TablePages,
   },
   props: {
-    toggleToEdit: {
+    toggleTo: {
       type: Function,
       default: () => ({})
     },
-    toggleToRemove: {
-      type: Function,
-      default: () => ({})
-    },
-    message: String,
-    label: {
+    message: {
       type: String,
       default: ''
     },
-    // toggleToDetail: {
-    //   type: Function,
-    //   default: () => ({return: null})
-    // }
+    label: {
+      type: String,
+      default: ''
+    }
   },
 
   async setup() {
     const players = ref(null);
     const pages = ref(0);
     const page = ref(0);
-    const sorting = ref('name');
+    const sorting = ref('firstName');
     const params = ref('');
     const query = ref(new URLSearchParams(location.search));
     const moreOption = ref(false);
@@ -107,6 +100,7 @@ export default {
       pages.value = Math.ceil(players.value.length / 6);
       page.value = +query.value.get("page");
       res = await axios.get(baseURL + "?_sort=" + sorting.value + "&order=asc&_start=0&_limit=6");
+      console.log(baseURL + "?_sort=" + sorting.value + "&order=asc&_start=0&_limit=6");
       players.value = [...res.data];
     } catch (e) {
       console.error(e);
@@ -194,12 +188,7 @@ export default {
       }
       await changePage(page.value + 1);
     }
-
-    function toggleToDetail(router, id) {
-      router.push({path: `/playerdetail/${id}`});
-    }
-
-    return { players: players, pages, page, sorting, query, params, moreOption, retirement: retirement, noPlayers: noPlayers, toggleToDetail, setMoreOptions, changePage, sort, search, changeCareer };
+    return { players: players, pages, page, sorting, query, params, moreOption, retirement: retirement, noPlayers: noPlayers, setMoreOptions, changePage, sort, search, changeCareer };
   }
 }
 </script>

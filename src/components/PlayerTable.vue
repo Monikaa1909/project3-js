@@ -27,6 +27,7 @@
       </thead>
       <tbody>
       <tr
+
           @click="toggleToDetail($router, player.id)"
           v-for="player of players"
 
@@ -77,10 +78,10 @@ export default {
       type: String,
       default: ''
     },
-    toggleToDetail: {
-      type: Function,
-      default: () => ({return: null})
-    }
+    // toggleToDetail: {
+    //   type: Function,
+    //   default: () => ({return: null})
+    // }
   },
 
   async setup() {
@@ -194,7 +195,11 @@ export default {
       await changePage(page.value + 1);
     }
 
-    return { players: players, pages, page, sorting, query, params, moreOption, retirement: retirement, noPlayers: noPlayers, setMoreOptions, changePage, sort, search, changeCareer };
+    function toggleToDetail(router, id) {
+      router.push({path: `/playerdetail/${id}`});
+    }
+
+    return { players: players, pages, page, sorting, query, params, moreOption, retirement: retirement, noPlayers: noPlayers, toggleToDetail, setMoreOptions, changePage, sort, search, changeCareer };
   }
 }
 </script>

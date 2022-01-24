@@ -1,7 +1,6 @@
 <template>
   <div>
     <PlayerTable class="mainPlayers"
-                 :toggleToDeatil="toggleToDetail"
                  :message="message"/>
     <MainButtons
         :toggleToEdit="toggleToEdit"
@@ -27,9 +26,9 @@ MainButtons: MainButtons
   setup() {
     const message = ref('There are no players')
 
-    function toggleToDetail(router, id) {
-      router.push({path: `/playerdetail/${id}`});
-    }
+    // function toggleToDetail(router, id) {
+    //   router.push({path: `/playerdetail/${id}`});
+    // }
 
     function toggleToAdd(router) {
 
